@@ -9,8 +9,8 @@ import { defineConfig } from 'astro/config';
 // B) Własna domena (plik public/CNAME z domeną):
 //    SITE = 'https://twojadomena.pl'      BASE = '/'
 // ─────────────────────────────────────────────────────────────
-const SITE = 'https://LOGIN.github.io';
-const BASE = '/gabinet-site';
+const SITE = 'https://zapasek1.github.io';
+const BASE = '/gadamzneurologopedastrona';
 
 export default defineConfig({
   site: SITE,

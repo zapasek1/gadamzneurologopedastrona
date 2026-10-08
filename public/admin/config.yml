@@ -5,7 +5,7 @@
 
 backend:
   name: github
-  repo: LOGIN/gabinet-site # ← zmień na swój login/nazwę repozytorium
+  repo: zapasek1/gadamzneurologopedastrona
   branch: main
   commit_messages:
     update: 'Treść: aktualizacja „{{slug}}”'
