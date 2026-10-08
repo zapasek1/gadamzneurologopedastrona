@@ -11,7 +11,14 @@ export function initTabs() {
       const on = t.getAttribute('aria-controls') === id;
       t.setAttribute('aria-selected', String(on));
       t.tabIndex = on ? 0 : -1;
-      if (on) t.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      if (on) {
+        // Przewiń tylko pasek zakładek w poziomie (mobile) — nigdy całą stronę.
+        const list = t.parentElement!;
+        const left = t.offsetLeft - list.offsetLeft;
+        if (left < list.scrollLeft || left + t.offsetWidth > list.scrollLeft + list.clientWidth) {
+          list.scrollLeft = left - 16;
+        }
+      }
     });
     panels.forEach((p) => (p.hidden = p.id !== id));
     if (opts.push && location.hash !== `#${id}`) history.pushState(null, '', `#${id}`);

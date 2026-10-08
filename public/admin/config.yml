@@ -29,7 +29,7 @@ collections:
         fields:
           - { name: imie_nazwisko, label: Imię i nazwisko, widget: string }
           - { name: tytul, label: Zawód / tytuł, widget: string, hint: 'np. Neurologopeda' }
-          - { name: haslo, label: Krótki opis pod nazwiskiem, widget: text, hint: '1–2 zdania widoczne na samej górze strony.' }
+          - { name: haslo, label: Tekst pod nazwiskiem, widget: markdown, hint: 'Widoczny na samej górze strony. Nowy akapit = pusta linia (Enter dwa razy).' }
           - { name: telefon, label: Telefon, widget: string }
           - { name: email, label: E-mail, widget: string }
           - { name: facebook_url, label: Link do Facebooka, widget: string, required: false, hint: 'Pełny adres strony na Facebooku, np. https://www.facebook.com/nazwa' }

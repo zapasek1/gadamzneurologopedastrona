@@ -55,11 +55,14 @@ const year = new Date().getFullYear();
   <header class="masthead">
     <div class="wrap masthead__inner">
       <p class="masthead__role">{ustawienia.tytul}</p>
-      <h1 class="masthead__name">{ustawienia.imie_nazwisko}</h1>
-      <p class="masthead__lede">{ustawienia.haslo}</p>
+      <h1 class="masthead__name">
+        {ustawienia.imie_nazwisko.split(' ').map((w, i) => (
+          <>{i > 0 && ' '}<span class="nowrap">{w}</span></>
+        ))}
+      </h1>
+      <div class="masthead__lede" set:html={md(ustawienia.haslo)} />
       <div class="masthead__actions">
         <a class="btn btn--solid" href="#pytanie" data-tab-link="pytanie">Zadaj pytanie</a>
-        <a class="btn" href={telHref(ustawienia.telefon)}>Zadzwoń: {ustawienia.telefon}</a>
       </div>
     </div>
     <svg class="wave" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true">
