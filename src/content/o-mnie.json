@@ -1,0 +1,11 @@
+{
+  "zdjecie": "/uploads/portret.svg",
+  "naglowek": "Dzień dobry, jestem neurologopedą",
+  "tresc": "Tu pojawi się Twój tekst o sobie. Napisz, jak zaczęła się Twoja praca z pacjentami, z kim pracujesz najchętniej i jak wygląda współpraca z Tobą.\n\nDrugi akapit może opowiadać o Twoim podejściu: czego pacjent i rodzina mogą się spodziewać, jak wygląda tempo terapii i jak wspierasz pracę w domu.",
+  "kwalifikacje": [
+    "Studia podyplomowe z neurologopedii — nazwa uczelni, rok",
+    "Logopedia — nazwa uczelni, rok",
+    "Certyfikat lub szkolenie — nazwa, rok",
+    "Członkostwo w stowarzyszeniu — nazwa"
+  ]
+}

@@ -1,0 +1,310 @@
+---
+import Base from '../layouts/Base.astro';
+import ustawienia from '../content/ustawienia.json';
+import oMnie from '../content/o-mnie.json';
+import oferta from '../content/oferta.json';
+import aktualnosci from '../content/aktualnosci.json';
+import kontakt from '../content/kontakt.json';
+import formularz from '../content/formularz.json';
+import { techConfig } from '../site.config';
+import { asset, href, md, telHref } from '../lib/util';
+
+const tabs = [
+  { id: 'o-mnie', label: 'O mnie' },
+  { id: 'oferta', label: 'Oferta' },
+  { id: 'aktualnosci', label: 'Aktualności' },
+  { id: 'pytanie', label: 'Zadaj pytanie' },
+  { id: 'kontakt', label: 'Kontakt' },
+];
+
+// Fala dźwiękowa w nagłówku — kształt wypowiadanego zdania (stały, generowany przy budowie).
+function wavePath(width = 1200, height = 90, step = 2): string {
+  const mid = height / 2;
+  const words = [
+    [0.04, 0.17], [0.21, 0.33], [0.37, 0.43], [0.47, 0.66], [0.70, 0.79], [0.83, 0.96],
+  ];
+  const pts: string[] = [];
+  for (let x = 0; x <= width; x += step) {
+    const t = x / width;
+    let env = 0;
+    for (const [a, b] of words) {
+      if (t >= a && t <= b) env = Math.max(env, Math.sin(((t - a) / (b - a)) * Math.PI));
+    }
+    const carrier =
+      Math.sin(x * 0.12) * 0.6 + Math.sin(x * 0.047 + 1.3) * 0.3 + Math.sin(x * 0.29 + 0.4) * 0.1;
+    const y = mid - carrier * env * (height * 0.46);
+    pts.push(`${x === 0 ? 'M' : 'L'}${x},${y.toFixed(1)}`);
+  }
+  return pts.join(' ');
+}
+const wave = wavePath();
+
+const mapQuery = encodeURIComponent(kontakt.adres);
+const mapEmbed = `https://maps.google.com/maps?q=${mapQuery}&z=16&output=embed`;
+const mapLink = kontakt.link_mapy_google || `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
+const directions = `https://www.google.com/maps/dir/?api=1&destination=${mapQuery}`;
+
+const fbSrc = `https://www.facebook.com/plugins/page.php?href=${encodeURIComponent(
+  ustawienia.facebook_url,
+)}&tabs=timeline&width=500&height=640&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false`;
+
+const igPosts = (aktualnosci.instagram_posty ?? []).filter(Boolean) as string[];
+const year = new Date().getFullYear();
+---
+<Base>
+  <header class="masthead">
+    <div class="wrap masthead__inner">
+      <p class="masthead__role">{ustawienia.tytul}</p>
+      <h1 class="masthead__name">{ustawienia.imie_nazwisko}</h1>
+      <p class="masthead__lede">{ustawienia.haslo}</p>
+      <div class="masthead__actions">
+        <a class="btn btn--solid" href="#pytanie" data-tab-link="pytanie">Zadaj pytanie</a>
+        <a class="btn" href={telHref(ustawienia.telefon)}>Zadzwoń: {ustawienia.telefon}</a>
+      </div>
+    </div>
+    <svg class="wave" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true">
+      <path d={wave} />
+    </svg>
+  </header>
+
+  <nav class="tabs" aria-label="Sekcje strony">
+    <div class="wrap">
+      <div class="tabs__list" role="tablist">
+        {tabs.map((t, i) => (
+          <a
+            class="tabs__tab"
+            id={`tab-${t.id}`}
+            href={`#${t.id}`}
+            role="tab"
+            aria-controls={t.id}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            tabindex={i === 0 ? 0 : -1}
+          >
+            {t.label}
+          </a>
+        ))}
+      </div>
+    </div>
+  </nav>
+
+  <main id="tresc" class="wrap">
+    <!-- O MNIE -->
+    <section class="panel" id="o-mnie" role="tabpanel" aria-labelledby="tab-o-mnie" tabindex="-1">
+      <div class="about">
+        <figure class="about__photo">
+          <img src={asset(oMnie.zdjecie)} alt={`${ustawienia.imie_nazwisko} — zdjęcie`} width="480" height="600" loading="eager" />
+        </figure>
+        <div class="about__text">
+          <h2>{oMnie.naglowek}</h2>
+          <div class="prose" set:html={md(oMnie.tresc)} />
+          {oMnie.kwalifikacje?.length > 0 && (
+            <>
+              <h3>Wykształcenie i kwalifikacje</h3>
+              <ul class="quals">
+                {oMnie.kwalifikacje.map((q: string) => <li>{q}</li>)}
+              </ul>
+            </>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- OFERTA -->
+    <section class="panel" id="oferta" role="tabpanel" aria-labelledby="tab-oferta" tabindex="-1">
+      <h2>Jak mogę pomóc</h2>
+      <div class="prose intro" set:html={md(oferta.wstep)} />
+      <dl class="services">
+        {oferta.uslugi.map((u) => (
+          <div class="services__row">
+            <dt>{u.nazwa}</dt>
+            <dd class="services__desc">{u.opis}</dd>
+            {u.cena && <dd class="services__price">{u.cena}</dd>}
+          </div>
+        ))}
+      </dl>
+      {oferta.pierwsza_wizyta?.length > 0 && (
+        <>
+          <h3>Pierwsza wizyta</h3>
+          <ol class="steps">
+            {oferta.pierwsza_wizyta.map((s: string) => <li>{s}</li>)}
+          </ol>
+        </>
+      )}
+      {oferta.uwagi && <div class="prose note" set:html={md(oferta.uwagi)} />}
+    </section>
+
+    <!-- AKTUALNOŚCI -->
+    <section class="panel" id="aktualnosci" role="tabpanel" aria-labelledby="tab-aktualnosci" tabindex="-1">
+      <h2>Aktualności</h2>
+      <div class="prose intro" set:html={md(aktualnosci.wstep)} />
+      <div class="social">
+        {aktualnosci.pokaz_facebook && ustawienia.facebook_url && (
+          <div class="social__col">
+            <h3>Facebook</h3>
+            <div class="embed" data-embed="facebook" data-src={fbSrc}>
+              <div class="embed__gate">
+                <p>Posty z Facebooka ładują się po kliknięciu. Facebook może wtedy zapisać pliki cookies.</p>
+                <button type="button" class="btn btn--solid" data-embed-load>Pokaż posty z Facebooka</button>
+                <a href={ustawienia.facebook_url} target="_blank" rel="noopener">Otwórz profil na Facebooku</a>
+              </div>
+            </div>
+          </div>
+        )}
+        {ustawienia.instagram_url && (
+          <div class="social__col">
+            <h3>Instagram</h3>
+            {aktualnosci.behold_feed_id ? (
+              <div class="embed" data-embed="behold" data-feed={aktualnosci.behold_feed_id}>
+                <div class="embed__gate">
+                  <p>Zdjęcia z Instagrama ładują się po kliknięciu.</p>
+                  <button type="button" class="btn btn--solid" data-embed-load>Pokaż Instagram</button>
+                  <a href={ustawienia.instagram_url} target="_blank" rel="noopener">Otwórz profil na Instagramie</a>
+                </div>
+              </div>
+            ) : igPosts.length > 0 ? (
+              <div class="embed" data-embed="instagram" data-posts={JSON.stringify(igPosts)}>
+                <div class="embed__gate">
+                  <p>Posty z Instagrama ładują się po kliknięciu. Instagram może wtedy zapisać pliki cookies.</p>
+                  <button type="button" class="btn btn--solid" data-embed-load>Pokaż posty z Instagrama</button>
+                  <a href={ustawienia.instagram_url} target="_blank" rel="noopener">Otwórz profil na Instagramie</a>
+                </div>
+              </div>
+            ) : (
+              <div class="embed">
+                <div class="embed__gate">
+                  <p>Zdjęcia, ćwiczenia i porady publikuję na Instagramie.</p>
+                  <a class="btn btn--solid" href={ustawienia.instagram_url} target="_blank" rel="noopener">Obserwuj na Instagramie</a>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- ZADAJ PYTANIE -->
+    <section class="panel" id="pytanie" role="tabpanel" aria-labelledby="tab-pytanie" tabindex="-1">
+      <div class="ask">
+        <div class="ask__intro">
+          <h2>Zadaj pytanie</h2>
+          <div class="prose" set:html={md(formularz.wstep)} />
+          <p class="ask__warn">{formularz.ostrzezenie}</p>
+          <p class="ask__alt">
+            Wolisz porozmawiać? <a href={telHref(ustawienia.telefon)}>{ustawienia.telefon}</a>
+          </p>
+        </div>
+        <form
+          class="form"
+          id="form"
+          novalidate
+          data-key={techConfig.web3formsKey}
+          data-email={ustawienia.email}
+          data-subject={`Pytanie ze strony — ${ustawienia.imie_nazwisko}`}
+          data-thanks={formularz.podziekowanie}
+        >
+          <div class="form__row">
+            <label for="f-name">Imię i nazwisko</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required />
+          </div>
+          <div class="form__pair">
+            <div class="form__row">
+              <label for="f-email">E-mail</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required />
+            </div>
+            <div class="form__row">
+              <label for="f-phone">Telefon <span class="opt">(opcjonalnie)</span></label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+          </div>
+          <div class="form__row">
+            <label for="f-topic">Czego dotyczy pytanie?</label>
+            <select id="f-topic" name="topic">
+              <option>Terapia dziecka</option>
+              <option>Terapia osoby dorosłej</option>
+              <option>Terminy i ceny</option>
+              <option>Inne</option>
+            </select>
+          </div>
+          <div class="form__row">
+            <label for="f-msg">Wiadomość</label>
+            <textarea id="f-msg" name="message" rows="6" required></textarea>
+          </div>
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <label class="form__consent">
+            <input type="checkbox" name="consent" required />
+            <span>{formularz.zgoda} <a href={href('polityka-prywatnosci/')}>Polityka prywatności</a>.</span>
+          </label>
+          <button class="btn btn--solid form__submit" type="submit">Wyślij pytanie</button>
+          <p class="form__status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- KONTAKT -->
+    <section class="panel" id="kontakt" role="tabpanel" aria-labelledby="tab-kontakt" tabindex="-1">
+      <h2>Kontakt</h2>
+      <div class="contact">
+        <div class="contact__info">
+          <address>
+            <strong>{kontakt.nazwa_gabinetu}</strong><br />
+            {kontakt.adres}
+          </address>
+          {kontakt.jak_trafic && <p class="contact__how">{kontakt.jak_trafic}</p>}
+          <p class="contact__lines">
+            <a href={telHref(ustawienia.telefon)}>{ustawienia.telefon}</a><br />
+            <a href={`mailto:${ustawienia.email}`}>{ustawienia.email}</a>
+          </p>
+          <h3>Godziny przyjęć</h3>
+          <table class="hours">
+            <tbody>
+              {kontakt.godziny.map((g) => (
+                <tr><th scope="row">{g.dni}</th><td>{g.godziny}</td></tr>
+              ))}
+            </tbody>
+          </table>
+          {kontakt.uwaga_godziny && <p class="contact__note">{kontakt.uwaga_godziny}</p>}
+          {kontakt.dojazd && (
+            <>
+              <h3>Dojazd</h3>
+              <p>{kontakt.dojazd}</p>
+            </>
+          )}
+          <p class="contact__social">
+            {ustawienia.facebook_url && <a href={ustawienia.facebook_url} target="_blank" rel="noopener">Facebook</a>}
+            {ustawienia.instagram_url && <a href={ustawienia.instagram_url} target="_blank" rel="noopener">Instagram</a>}
+          </p>
+        </div>
+        <div class="contact__map">
+          {kontakt.pokaz_mape && (
+            <div class="embed embed--map" data-embed="map" data-src={mapEmbed}>
+              <div class="embed__gate">
+                <p>Mapa Google ładuje się po kliknięciu. Google może wtedy zapisać pliki cookies.</p>
+                <button type="button" class="btn btn--solid" data-embed-load>Pokaż mapę</button>
+              </div>
+            </div>
+          )}
+          <div class="contact__mapLinks">
+            <a class="btn btn--solid" href={directions} target="_blank" rel="noopener">Wyznacz trasę</a>
+            <a class="btn" href={mapLink} target="_blank" rel="noopener">Otwórz w Mapach Google</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <p>© {year} {ustawienia.imie_nazwisko} · {kontakt.nazwa_gabinetu}</p>
+      <p><a href={href('polityka-prywatnosci/')}>Polityka prywatności</a></p>
+    </div>
+  </footer>
+
+  <script>
+    import { initTabs } from '../scripts/tabs';
+    import { initEmbeds } from '../scripts/embeds';
+    import { initForm } from '../scripts/form';
+    initTabs();
+    initEmbeds();
+    initForm();
+  </script>
+</Base>

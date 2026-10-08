@@ -1,0 +1,34 @@
+---
+import '@fontsource-variable/bricolage-grotesque';
+import '@fontsource-variable/literata';
+import '../styles/global.css';
+import ustawienia from '../content/ustawienia.json';
+import { asset } from '../lib/util';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title, description } = Astro.props;
+const pageTitle = title ?? `${ustawienia.imie_nazwisko} — ${ustawienia.tytul}`;
+const desc = description ?? ustawienia.seo_opis;
+---
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={desc} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pl_PL" />
+    <link rel="icon" href={asset('favicon.svg')} type="image/svg+xml" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
+  </head>
+  <body>
+    <a class="skip" href="#tresc">Przejdź do treści</a>
+    <slot />
+  </body>
+</html>

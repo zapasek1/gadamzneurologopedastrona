@@ -1,0 +1,135 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+#
+# Panel edycji treści: https://<adres-strony>/admin/
+# Logowanie: przycisk „Sign In with Token” + token GitHub (szczegóły w README).
+
+backend:
+  name: github
+  repo: LOGIN/gabinet-site # ← zmień na swój login/nazwę repozytorium
+  branch: main
+  commit_messages:
+    update: 'Treść: aktualizacja „{{slug}}”'
+    uploadMedia: 'Plik: dodano {{path}}'
+    deleteMedia: 'Plik: usunięto {{path}}'
+
+publish_mode: simple
+media_folder: public/uploads
+public_folder: /uploads
+
+collections:
+  - name: strona
+    label: Strona
+    description: Teksty, zdjęcia i dane kontaktowe. Po zapisaniu zmiany pojawią się na stronie po około 1–2 minutach.
+    files:
+      # ── Ustawienia ogólne ────────────────────────────
+      - name: ustawienia
+        label: Dane podstawowe
+        file: src/content/ustawienia.json
+        format: json
+        fields:
+          - { name: imie_nazwisko, label: Imię i nazwisko, widget: string }
+          - { name: tytul, label: Zawód / tytuł, widget: string, hint: 'np. Neurologopeda' }
+          - { name: haslo, label: Krótki opis pod nazwiskiem, widget: text, hint: '1–2 zdania widoczne na samej górze strony.' }
+          - { name: telefon, label: Telefon, widget: string }
+          - { name: email, label: E-mail, widget: string }
+          - { name: facebook_url, label: Link do Facebooka, widget: string, required: false, hint: 'Pełny adres strony na Facebooku, np. https://www.facebook.com/nazwa' }
+          - { name: instagram_url, label: Link do Instagrama, widget: string, required: false }
+          - { name: seo_opis, label: Opis dla Google, widget: text, hint: 'Do ~155 znaków. Pokazuje się w wynikach wyszukiwania.' }
+
+      # ── O mnie ───────────────────────────────────────
+      - name: o-mnie
+        label: O mnie
+        file: src/content/o-mnie.json
+        format: json
+        fields:
+          - { name: zdjecie, label: Zdjęcie, widget: image, hint: 'Najlepiej pionowe (portret), min. 800 px szerokości.' }
+          - { name: naglowek, label: Nagłówek, widget: string }
+          - { name: tresc, label: Tekst o mnie, widget: markdown }
+          - name: kwalifikacje
+            label: Wykształcenie i kwalifikacje
+            label_singular: pozycję
+            widget: list
+            required: false
+            field: { name: pozycja, label: Pozycja, widget: string }
+
+      # ── Oferta ───────────────────────────────────────
+      - name: oferta
+        label: Oferta
+        file: src/content/oferta.json
+        format: json
+        fields:
+          - { name: wstep, label: Wstęp, widget: markdown }
+          - name: uslugi
+            label: Usługi
+            label_singular: usługę
+            widget: list
+            summary: '{{fields.nazwa}}'
+            fields:
+              - { name: nazwa, label: Nazwa, widget: string }
+              - { name: opis, label: Opis, widget: text }
+              - { name: cena, label: 'Cena i czas (opcjonalnie)', widget: string, required: false, hint: 'np. 150 zł / 50 min' }
+          - name: pierwsza_wizyta
+            label: Jak wygląda pierwsza wizyta (kroki)
+            label_singular: krok
+            widget: list
+            required: false
+            field: { name: krok, label: Krok, widget: text }
+          - { name: uwagi, label: Dodatkowe informacje, widget: markdown, required: false, hint: 'np. płatności, wizyty domowe.' }
+
+      # ── Aktualności (social media) ───────────────────
+      - name: aktualnosci
+        label: Aktualności (Facebook i Instagram)
+        file: src/content/aktualnosci.json
+        format: json
+        fields:
+          - { name: wstep, label: Wstęp, widget: text }
+          - { name: pokaz_facebook, label: Pokazuj posty z Facebooka, widget: boolean, default: true }
+          - name: instagram_posty
+            label: Wybrane posty z Instagrama
+            label_singular: post
+            widget: list
+            required: false
+            hint: 'Wklej link do posta (na Instagramie: ⋯ → Kopiuj link). Najnowsze dawaj na górę. 3–6 postów wygląda najlepiej.'
+            field: { name: url, label: Link do posta, widget: string }
+          - { name: behold_feed_id, label: 'Behold — ID kanału (opcjonalnie)', widget: string, required: false, hint: 'Jeśli wpisane, zamiast wybranych postów pokaże się automatycznie aktualizowany kanał z Behold.so.' }
+
+      # ── Formularz ────────────────────────────────────
+      - name: formularz
+        label: Formularz „Zadaj pytanie”
+        file: src/content/formularz.json
+        format: json
+        fields:
+          - { name: wstep, label: Tekst nad formularzem, widget: markdown }
+          - { name: ostrzezenie, label: Uwaga o danych medycznych, widget: text }
+          - { name: zgoda, label: Treść zgody (RODO), widget: text }
+          - { name: podziekowanie, label: Komunikat po wysłaniu, widget: string }
+
+      # ── Kontakt ──────────────────────────────────────
+      - name: kontakt
+        label: Kontakt i mapa
+        file: src/content/kontakt.json
+        format: json
+        fields:
+          - { name: nazwa_gabinetu, label: Nazwa gabinetu, widget: string }
+          - { name: adres, label: Adres gabinetu, widget: string, hint: 'Na tej podstawie tworzona jest mapa i przycisk „Wyznacz trasę”.' }
+          - { name: jak_trafic, label: Jak trafić (wejście, piętro, domofon), widget: text, required: false }
+          - { name: dojazd, label: Dojazd i parking, widget: text, required: false }
+          - { name: link_mapy_google, label: 'Link do wizytówki Google (opcjonalnie)', widget: string, required: false, hint: 'Jeśli gabinet ma profil firmy w Google: Mapy Google → Udostępnij → Kopiuj link.' }
+          - { name: pokaz_mape, label: Pokazuj mapę, widget: boolean, default: true }
+          - name: godziny
+            label: Godziny przyjęć
+            label_singular: dzień
+            widget: list
+            summary: '{{fields.dni}}: {{fields.godziny}}'
+            fields:
+              - { name: dni, label: Dzień, widget: string }
+              - { name: godziny, label: Godziny, widget: string }
+          - { name: uwaga_godziny, label: Uwaga pod godzinami, widget: string, required: false }
+
+      # ── Polityka prywatności ─────────────────────────
+      - name: polityka
+        label: Polityka prywatności
+        file: src/content/polityka.json
+        format: json
+        fields:
+          - { name: tresc, label: Treść, widget: markdown }

@@ -1,0 +1,31 @@
+{
+  "wstep": "Każda terapia zaczyna się od rozmowy i diagnozy. Poniżej znajdziesz obszary, w których pomagam. Jeśli nie widzisz tu swojej sytuacji — napisz, chętnie odpowiem.",
+  "uslugi": [
+    {
+      "nazwa": "Diagnoza neurologopedyczna",
+      "opis": "Ocena mowy, rozumienia, połykania i funkcji oralnych. Po diagnozie otrzymujesz omówienie wyników i plan terapii.",
+      "cena": "200 zł / 90 min"
+    },
+    {
+      "nazwa": "Terapia dzieci",
+      "opis": "Opóźniony rozwój mowy, wady wymowy, trudności w komunikacji, wsparcie dzieci z zaburzeniami neurorozwojowymi.",
+      "cena": "150 zł / 50 min"
+    },
+    {
+      "nazwa": "Terapia dorosłych",
+      "opis": "Afazja i dyzartria po udarze lub urazie mózgu, zaburzenia mowy w chorobach neurologicznych, trudności z połykaniem.",
+      "cena": "150 zł / 50 min"
+    },
+    {
+      "nazwa": "Konsultacja dla rodziców",
+      "opis": "Rozmowa o rozwoju mowy dziecka, ćwiczenia do domu i wskazówki na co dzień.",
+      "cena": "120 zł / 45 min"
+    }
+  ],
+  "pierwsza_wizyta": [
+    "Krótka rozmowa telefoniczna lub wiadomość — ustalamy termin i cel wizyty.",
+    "Wywiad i diagnoza w gabinecie. Warto zabrać dokumentację medyczną, jeśli jest.",
+    "Omówienie wyników i wspólne ustalenie planu terapii."
+  ],
+  "uwagi": "Wizyty domowe możliwe po wcześniejszym ustaleniu. Płatność gotówką, kartą lub przelewem."
+}

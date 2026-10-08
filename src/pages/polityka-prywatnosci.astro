@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import polityka from '../content/polityka.json';
+import ustawienia from '../content/ustawienia.json';
+import { href, md } from '../lib/util';
+---
+<Base title={`Polityka prywatności — ${ustawienia.imie_nazwisko}`}>
+  <main id="tresc" class="page">
+    <a class="page__back" href={href('')}>Wróć na stronę główną</a>
+    <h1>Polityka prywatności</h1>
+    <div class="prose" set:html={md(polityka.tresc)} />
+  </main>
+</Base>
