@@ -146,7 +146,7 @@ const year = new Date().getFullYear();
             <h3>Facebook</h3>
             <div class="embed" data-embed="facebook" data-src={fbSrc}>
               <div class="embed__gate">
-                <p>Posty z Facebooka ładują się po kliknięciu. Facebook może wtedy zapisać pliki cookies.</p>
+                <p>Posty z Facebooka są ukryte, bo nie wyrażono zgody na pliki cookies.</p>
                 <button type="button" class="btn btn--solid" data-embed-load>Pokaż posty z Facebooka</button>
                 <a href={ustawienia.facebook_url} target="_blank" rel="noopener">Otwórz profil na Facebooku</a>
               </div>
@@ -159,7 +159,7 @@ const year = new Date().getFullYear();
             {aktualnosci.behold_feed_id ? (
               <div class="embed" data-embed="behold" data-feed={aktualnosci.behold_feed_id}>
                 <div class="embed__gate">
-                  <p>Zdjęcia z Instagrama ładują się po kliknięciu.</p>
+                  <p>Zdjęcia z Instagrama są ukryte, bo nie wyrażono zgody na pliki cookies.</p>
                   <button type="button" class="btn btn--solid" data-embed-load>Pokaż Instagram</button>
                   <a href={ustawienia.instagram_url} target="_blank" rel="noopener">Otwórz profil na Instagramie</a>
                 </div>
@@ -167,7 +167,7 @@ const year = new Date().getFullYear();
             ) : igPosts.length > 0 ? (
               <div class="embed" data-embed="instagram" data-posts={JSON.stringify(igPosts)}>
                 <div class="embed__gate">
-                  <p>Posty z Instagrama ładują się po kliknięciu. Instagram może wtedy zapisać pliki cookies.</p>
+                  <p>Posty z Instagrama są ukryte, bo nie wyrażono zgody na pliki cookies.</p>
                   <button type="button" class="btn btn--solid" data-embed-load>Pokaż posty z Instagrama</button>
                   <a href={ustawienia.instagram_url} target="_blank" rel="noopener">Otwórz profil na Instagramie</a>
                 </div>
@@ -281,7 +281,7 @@ const year = new Date().getFullYear();
           {kontakt.pokaz_mape && (
             <div class="embed embed--map" data-embed="map" data-src={mapEmbed}>
               <div class="embed__gate">
-                <p>Mapa Google ładuje się po kliknięciu. Google może wtedy zapisać pliki cookies.</p>
+                <p>Mapa jest ukryta, bo nie wyrażono zgody na pliki cookies.</p>
                 <button type="button" class="btn btn--solid" data-embed-load>Pokaż mapę</button>
               </div>
             </div>
@@ -298,7 +298,10 @@ const year = new Date().getFullYear();
   <footer class="footer">
     <div class="wrap footer__inner">
       <p>© {year} {ustawienia.imie_nazwisko} · {kontakt.nazwa_gabinetu}</p>
-      <p><a href={href('polityka-prywatnosci/')}>Polityka prywatności</a></p>
+      <p class="footer__links">
+        <a href={href('polityka-prywatnosci/')}>Polityka prywatności</a>
+        <a href="#" data-open-consent>Ustawienia cookies</a>
+      </p>
     </div>
   </footer>
 

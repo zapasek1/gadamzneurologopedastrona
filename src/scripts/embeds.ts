@@ -1,24 +1,8 @@
-// Treści zewnętrzne (Facebook, Instagram, Mapa Google) ładują się dopiero po kliknięciu.
-// Po pierwszej zgodzie przeglądarka zapamiętuje wybór dla danej usługi.
+// Treści zewnętrzne (Facebook, Instagram, Mapa Google).
+// Zgoda „Akceptuję” w pasku cookies → wszystko ładuje się automatycznie.
+// Bez zgody → w miejscu treści przycisk „Pokaż…”, który wczytuje tylko tę jedną rzecz.
 
-const KEY = 'zgoda-osadzenia';
-
-function remembered(): string[] {
-  try {
-    return JSON.parse(localStorage.getItem(KEY) || '[]');
-  } catch {
-    return [];
-  }
-}
-function remember(type: string) {
-  try {
-    const list = new Set(remembered());
-    list.add(type);
-    localStorage.setItem(KEY, JSON.stringify([...list]));
-  } catch {
-    /* tryb prywatny itp. — trudno */
-  }
-}
+import { getConsent, onConsent } from './consent';
 
 function loadScript(src: string, module = false): Promise<void> {
   return new Promise((resolve, reject) => {
@@ -47,6 +31,7 @@ function iframe(src: string, title: string, height: number) {
 }
 
 function load(box: HTMLElement) {
+  if (box.classList.contains('is-loaded')) return;
   const type = box.dataset.embed!;
   const holder = document.createElement('div');
   holder.className = 'embed__content';
@@ -84,13 +69,13 @@ function load(box: HTMLElement) {
 }
 
 export function initEmbeds() {
-  const ok = remembered();
-  document.querySelectorAll<HTMLElement>('.embed[data-embed]').forEach((box) => {
-    const type = box.dataset.embed!;
-    if (ok.includes(type)) return load(box);
-    box.querySelector('[data-embed-load]')?.addEventListener('click', () => {
-      remember(type);
-      load(box);
-    });
-  });
+  const boxes = Array.from(document.querySelectorAll<HTMLElement>('.embed[data-embed]'));
+  const loadAll = () => boxes.forEach(load);
+
+  boxes.forEach((box) =>
+    box.querySelector('[data-embed-load]')?.addEventListener('click', () => load(box)),
+  );
+
+  if (getConsent() === 'all') loadAll();
+  onConsent((value) => value === 'all' && loadAll());
 }

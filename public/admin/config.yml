@@ -126,6 +126,14 @@ collections:
               - { name: godziny, label: Godziny, widget: string }
           - { name: uwaga_godziny, label: Uwaga pod godzinami, widget: string, required: false }
 
+      # ── Pasek cookies ────────────────────────────────
+      - name: cookies
+        label: Pasek zgody na cookies
+        file: src/content/cookies.json
+        format: json
+        fields:
+          - { name: tekst, label: Treść paska, widget: text, hint: 'Krótko: jakie serwisy i co się dzieje po odmowie. Przyciski „Akceptuję” i „Tylko niezbędne” są stałe.' }
+
       # ── Polityka prywatności ─────────────────────────
       - name: polityka
         label: Polityka prywatności

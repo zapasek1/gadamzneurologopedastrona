@@ -3,7 +3,8 @@ import '@fontsource-variable/bricolage-grotesque';
 import '@fontsource-variable/literata';
 import '../styles/global.css';
 import ustawienia from '../content/ustawienia.json';
-import { asset } from '../lib/util';
+import cookies from '../content/cookies.json';
+import { asset, href } from '../lib/util';
 
 interface Props {
   title?: string;
@@ -30,5 +31,33 @@ const desc = description ?? ustawienia.seo_opis;
   <body>
     <a class="skip" href="#tresc">Przejdź do treści</a>
     <slot />
+
+    <section
+      id="cookie-banner"
+      class="consent"
+      role="dialog"
+      aria-modal="false"
+      aria-labelledby="consent-title"
+      aria-describedby="consent-text"
+      hidden
+    >
+      <div class="consent__inner">
+        <div class="consent__text">
+          <h2 id="consent-title" class="consent__title">Pliki cookies</h2>
+          <p id="consent-text">
+            {cookies.tekst}{' '}<a href={href('polityka-prywatnosci/')}>Polityka prywatności</a>
+          </p>
+        </div>
+        <div class="consent__actions">
+          <button type="button" class="btn btn--solid" data-consent="all">Akceptuję</button>
+          <button type="button" class="btn" data-consent="necessary">Tylko niezbędne</button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      import { initConsentBanner } from '../scripts/consent';
+      initConsentBanner();
+    </script>
   </body>
 </html>

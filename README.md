@@ -92,7 +92,12 @@ A short Polish guide for her is in [`INSTRUKCJA-EDYCJI.md`](INSTRUKCJA-EDYCJI.md
 
 ## 4. Social media
 
-All embeds (Facebook, Instagram, Google Maps) are **click-to-load**: nothing from Meta/Google loads until the visitor clicks "Pokaż…", and the choice is remembered in their browser. That keeps the site GDPR-friendly without a cookie banner. Fonts are self-hosted for the same reason.
+A **cookie consent banner** appears on the first visit:
+- **Akceptuję** → Facebook, Instagram and the Google map load automatically (now and on later visits).
+- **Tylko niezbędne** → nothing from Meta/Google loads; each embed shows a "Pokaż…" button to load just that one.
+- **Ustawienia cookies** in the footer (and a button on the privacy page) reopens the banner; withdrawing consent reloads the page to remove loaded embeds.
+
+The choice is stored in the visitor's `localStorage` (key `zgoda-cookies`), not in a cookie. Both buttons have equal weight, as EU regulators expect. Banner text is editable in the CMS ("Pasek zgody na cookies"). Fonts are self-hosted so no Google request happens before consent.
 
 ### 4.1 Facebook
 Set *Link do Facebooka* in the CMS. Uses the official Page Plugin, which works only for a **Facebook Page** (fanpage), not a personal profile, and the page must be public (no age/country restrictions).
