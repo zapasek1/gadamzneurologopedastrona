@@ -65,6 +65,43 @@ collections:
             required: false
             field: { name: pozycja, label: Pozycja, widget: string }
 
+      # ── Centrum wiedzy ───────────────────────────────
+      - name: wiedza
+        label: Centrum wiedzy
+        file: src/content/wiedza.json
+        format: json
+        fields:
+          - { name: wstep, label: Wstęp, widget: markdown }
+          - name: artykuly
+            label: Pytania rodziców
+            label_singular: artykuł
+            widget: list
+            required: false
+            summary: '{{fields.tytul}}'
+            hint: 'Kolejność na liście = kolejność na stronie. Przeciągnij, aby zmienić.'
+            fields:
+              - { name: tytul, label: Pytanie / tytuł, widget: string }
+              - { name: tresc, label: Treść, widget: markdown }
+          - { name: metody_wstep, label: Wstęp do metod, widget: text, required: false }
+          - name: metody
+            label: Metody terapii
+            label_singular: metodę
+            widget: list
+            required: false
+            summary: '{{fields.nazwa}}'
+            fields:
+              - { name: nazwa, label: Nazwa metody, widget: string }
+              - { name: tresc, label: Opis, widget: markdown }
+          - name: linki
+            label: Przydatne strony
+            label_singular: link
+            widget: list
+            required: false
+            summary: '{{fields.nazwa}}'
+            fields:
+              - { name: nazwa, label: Nazwa, widget: string }
+              - { name: url, label: Adres (https://…), widget: string }
+
       # ── Oferta ───────────────────────────────────────
       - name: oferta
         label: Oferta

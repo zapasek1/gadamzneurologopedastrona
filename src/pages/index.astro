@@ -6,11 +6,13 @@ import oferta from '../content/oferta.json';
 import aktualnosci from '../content/aktualnosci.json';
 import kontakt from '../content/kontakt.json';
 import formularz from '../content/formularz.json';
+import wiedza from '../content/wiedza.json';
 import { techConfig } from '../site.config';
 import { asset, href, md, telHref } from '../lib/util';
 
 const tabs = [
   { id: 'o-mnie', label: 'O mnie' },
+  { id: 'wiedza', label: 'Centrum wiedzy' },
   { id: 'oferta', label: 'Oferta' },
   { id: 'aktualnosci', label: 'Aktualności' },
   { id: 'pytanie', label: 'Zadaj pytanie' },
@@ -147,6 +149,48 @@ const year = new Date().getFullYear();
           )}
         </div>
       </div>
+    </section>
+
+    <!-- CENTRUM WIEDZY -->
+    <section class="panel" id="wiedza" role="tabpanel" aria-labelledby="tab-wiedza" tabindex="-1">
+      <h2>Centrum wiedzy</h2>
+      {wiedza.wstep && <div class="prose intro" set:html={md(wiedza.wstep)} />}
+
+      {wiedza.artykuly?.length > 0 && (
+        <div class="kb">
+          <h3 class="kb__title">Pytania rodziców</h3>
+          {wiedza.artykuly.map((a) => (
+            <details class="kb__item">
+              <summary>{a.tytul}</summary>
+              <div class="prose kb__body" set:html={md(a.tresc)} />
+            </details>
+          ))}
+        </div>
+      )}
+
+      {wiedza.metody?.length > 0 && (
+        <div class="kb">
+          <h3 class="kb__title">Metody terapii</h3>
+          {wiedza.metody_wstep && <p class="kb__lede">{wiedza.metody_wstep}</p>}
+          {wiedza.metody.map((m) => (
+            <details class="kb__item">
+              <summary>{m.nazwa}</summary>
+              <div class="prose kb__body" set:html={md(m.tresc)} />
+            </details>
+          ))}
+        </div>
+      )}
+
+      {wiedza.linki?.length > 0 && (
+        <div class="kb">
+          <h3 class="kb__title">Przydatne strony</h3>
+          <ul class="kb__links">
+            {wiedza.linki.map((l) => (
+              <li><a href={l.url} target="_blank" rel="noopener">{l.nazwa}</a></li>
+            ))}
+          </ul>
+        </div>
+      )}
     </section>
 
     <!-- OFERTA -->
