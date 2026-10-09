@@ -163,7 +163,7 @@ collections:
           - { name: nazwa_gabinetu, label: Nazwa gabinetu, widget: string }
           - { name: adres, label: Adres gabinetu, widget: string, hint: 'Na tej podstawie tworzona jest mapa i przycisk „Wyznacz trasę”.' }
           - { name: forma_wizyt, label: Forma wizyt, widget: string, required: false, hint: 'np. Wizyty w gabinecie w Warszawie i online.' }
-          - { name: jak_trafic, label: Jak trafić (wejście, piętro, domofon), widget: text, required: false }
+          - { name: jak_trafic, label: 'Jak trafić (wejście, piętro, domofon)', widget: text, required: false }
           - { name: dojazd, label: Dojazd i parking, widget: text, required: false }
           - { name: link_mapy_google, label: 'Link do wizytówki Google (opcjonalnie)', widget: string, required: false, hint: 'Jeśli gabinet ma profil firmy w Google: Mapy Google → Udostępnij → Kopiuj link.' }
           - { name: pokaz_mape, label: Pokazuj mapę, widget: boolean, default: true }
