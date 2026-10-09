@@ -1,6 +1,10 @@
 {
   "wstep": "Na bieżąco dzielę się ćwiczeniami, poradami i nowościami z gabinetu.",
   "pokaz_facebook": true,
-  "instagram_posty": [],
+  "instagram_posty": [
+    "https://www.instagram.com/reel/DeM2PSTjTHK/",
+    "https://www.instagram.com/p/DeHsn2ODeBm/",
+    "https://www.instagram.com/reel/Dd_-P8vATJj/"
+  ],
   "behold_feed_id": ""
 }

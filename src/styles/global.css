@@ -218,6 +218,8 @@ main.wrap { padding-bottom: clamp(3rem, 8vw, 5rem); }
 .embed--map .embed__gate { min-height: 20rem; }
 .embed--map.is-loaded .embed__content { padding: 0; }
 .instagram-media { margin: 0 auto 1rem !important; min-width: 0 !important; }
+/* Kilka postów IG obok kanału FB — przewijane w pudełku tej samej wysokości. */
+.embed[data-embed='instagram'] .embed__content { max-height: 656px; overflow-y: auto; overscroll-behavior: contain; }
 
 /* Formularz */
 .ask { display: grid; gap: clamp(1.5rem, 4vw, 3.5rem); }

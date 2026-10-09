@@ -182,6 +182,11 @@ const year = new Date().getFullYear();
                 </div>
               </div>
             )}
+            {(aktualnosci.behold_feed_id || igPosts.length > 0) && (
+              <p class="social__more">
+                <a href={ustawienia.instagram_url} target="_blank" rel="noopener">Zobacz więcej na Instagramie</a>
+              </p>
+            )}
           </div>
         )}
       </div>
