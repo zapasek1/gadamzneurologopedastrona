@@ -21,6 +21,7 @@ export function initTabs() {
       }
     });
     panels.forEach((p) => (p.hidden = p.id !== id));
+    window.dispatchEvent(new CustomEvent('tab-shown', { detail: id }));
     if (opts.push && location.hash !== `#${id}`) history.pushState(null, '', `#${id}`);
     if (opts.focus) {
       const tab = tabs.find((t) => t.getAttribute('aria-controls') === id);

@@ -37,7 +37,16 @@ function load(box: HTMLElement) {
   holder.className = 'embed__content';
 
   if (type === 'facebook') {
-    holder.appendChild(iframe(box.dataset.src!, 'Posty z Facebooka', 640));
+    // Wtyczka Facebooka mierzy się raz przy wczytaniu (180–500 px) — podajemy faktyczną szerokość pudełka.
+    const width = Math.round(Math.min(500, Math.max(180, box.clientWidth - 16)));
+    const src = box.dataset.src!.replace(/([?&])width=\d+/, `$1width=${width}`);
+    const f = iframe(src, 'Posty z Facebooka', 640);
+    f.loading = 'eager';
+    f.width = String(width);
+    f.style.width = `${width}px`;
+    f.style.maxWidth = '100%';
+    f.style.margin = '0 auto';
+    holder.appendChild(f);
   } else if (type === 'map') {
     holder.appendChild(iframe(box.dataset.src!, 'Mapa dojazdu do gabinetu', 380));
   } else if (type === 'instagram') {
@@ -68,14 +77,23 @@ function load(box: HTMLElement) {
   box.classList.add('is-loaded');
 }
 
+const visible = (el: HTMLElement) => el.offsetParent !== null && el.clientWidth > 0;
+
 export function initEmbeds() {
   const boxes = Array.from(document.querySelectorAll<HTMLElement>('.embed[data-embed]'));
-  const loadAll = () => boxes.forEach(load);
+
+  // Ładujemy tylko to, co jest widoczne. Treść w ukrytej zakładce wczyta się, gdy zakładka się pokaże —
+  // wtyczki Facebooka/Google wczytane w ukrytym elemencie potrafią się zawiesić (wieczny „spinner”).
+  const loadVisible = () => {
+    if (getConsent() !== 'all') return;
+    boxes.filter(visible).forEach(load);
+  };
 
   boxes.forEach((box) =>
     box.querySelector('[data-embed-load]')?.addEventListener('click', () => load(box)),
   );
 
-  if (getConsent() === 'all') loadAll();
-  onConsent((value) => value === 'all' && loadAll());
+  loadVisible();
+  onConsent(loadVisible);
+  window.addEventListener('tab-shown', () => requestAnimationFrame(loadVisible));
 }

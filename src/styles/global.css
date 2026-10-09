@@ -213,6 +213,7 @@ main.wrap { padding-bottom: clamp(3rem, 8vw, 5rem); }
 }
 .embed__gate p { margin: 0; max-width: 28rem; color: var(--ink-soft); }
 .embed__content { padding: 0.5rem; }
+.social__more { margin: 0.75rem 0 0; font-family: var(--display); font-weight: 600; }
 .embed__content iframe { width: 100%; display: block; }
 .embed--map .embed__gate { min-height: 20rem; }
 .embed--map.is-loaded .embed__content { padding: 0; }

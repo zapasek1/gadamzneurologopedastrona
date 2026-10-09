@@ -148,9 +148,11 @@ const year = new Date().getFullYear();
               <div class="embed__gate">
                 <p>Posty z Facebooka są ukryte, bo nie wyrażono zgody na pliki cookies.</p>
                 <button type="button" class="btn btn--solid" data-embed-load>Pokaż posty z Facebooka</button>
-                <a href={ustawienia.facebook_url} target="_blank" rel="noopener">Otwórz profil na Facebooku</a>
               </div>
             </div>
+            <p class="social__more">
+              <a href={ustawienia.facebook_url} target="_blank" rel="noopener">Zobacz wszystkie posty na Facebooku</a>
+            </p>
           </div>
         )}
         {ustawienia.instagram_url && (
