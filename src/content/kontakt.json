@@ -1,16 +1,11 @@
 {
-  "nazwa_gabinetu": "Gabinet Neurologopedyczny",
-  "adres": "ul. Przykładowa 12/3, 00-001 Warszawa",
-  "jak_trafic": "Wejście od podwórza, 1. piętro. Domofon: 3.",
-  "dojazd": "Parking przy ulicy, przystanek tramwajowy 200 m od gabinetu.",
+  "nazwa_gabinetu": "Gadam — gabinet neurologopedyczny",
+  "adres": "ul. Encyklopedyczna 17, 01-990 Warszawa",
+  "forma_wizyt": "Wizyty w gabinecie w Warszawie i online.",
+  "jak_trafic": "",
+  "dojazd": "",
   "link_mapy_google": "",
   "pokaz_mape": true,
-  "godziny": [
-    { "dni": "Poniedziałek", "godziny": "12:00 – 19:00" },
-    { "dni": "Wtorek", "godziny": "9:00 – 16:00" },
-    { "dni": "Środa", "godziny": "12:00 – 19:00" },
-    { "dni": "Czwartek", "godziny": "9:00 – 16:00" },
-    { "dni": "Piątek", "godziny": "9:00 – 14:00" }
-  ],
-  "uwaga_godziny": "Wizyty wyłącznie po wcześniejszym umówieniu."
+  "godziny": [],
+  "uwaga_godziny": "Wizyty wyłącznie po wcześniejszym umówieniu — zadzwoń lub napisz."
 }

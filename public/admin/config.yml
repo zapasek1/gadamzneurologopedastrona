@@ -27,9 +27,22 @@ collections:
         file: src/content/ustawienia.json
         format: json
         fields:
+          - { name: logo, label: Logo, widget: image, hint: 'Okrągłe logo z przezroczystym tłem (PNG). Pokazuje się w nagłówku.' }
           - { name: imie_nazwisko, label: Imię i nazwisko, widget: string }
           - { name: tytul, label: Zawód / tytuł, widget: string, hint: 'np. Neurologopeda' }
+          - { name: podtytul, label: Linia pod nazwiskiem, widget: string, required: false, hint: 'np. Dzieci i dorośli · terapia mowy i komunikacji' }
           - { name: haslo, label: Tekst pod nazwiskiem, widget: markdown, hint: 'Widoczny na samej górze strony. Nowy akapit = pusta linia (Enter dwa razy).' }
+          - name: filary
+            label: Trzy wyróżniki (pas pod nagłówkiem)
+            label_singular: wyróżnik
+            widget: list
+            required: false
+            max: 3
+            summary: '{{fields.tytul}}'
+            hint: 'Ikony są przypisane do kolejności: 1 — mózg, 2 — dwie osoby, 3 — dłonie z sercem.'
+            fields:
+              - { name: tytul, label: Tytuł, widget: string }
+              - { name: opis, label: Opis, widget: string }
           - { name: telefon, label: Telefon, widget: string }
           - { name: email, label: E-mail, widget: string }
           - { name: facebook_url, label: Link do Facebooka, widget: string, required: false, hint: 'Pełny adres strony na Facebooku, np. https://www.facebook.com/nazwa' }
@@ -112,6 +125,7 @@ collections:
         fields:
           - { name: nazwa_gabinetu, label: Nazwa gabinetu, widget: string }
           - { name: adres, label: Adres gabinetu, widget: string, hint: 'Na tej podstawie tworzona jest mapa i przycisk „Wyznacz trasę”.' }
+          - { name: forma_wizyt, label: Forma wizyt, widget: string, required: false, hint: 'np. Wizyty w gabinecie w Warszawie i online.' }
           - { name: jak_trafic, label: Jak trafić (wejście, piętro, domofon), widget: text, required: false }
           - { name: dojazd, label: Dojazd i parking, widget: text, required: false }
           - { name: link_mapy_google, label: 'Link do wizytówki Google (opcjonalnie)', widget: string, required: false, hint: 'Jeśli gabinet ma profil firmy w Google: Mapy Google → Udostępnij → Kopiuj link.' }
@@ -120,6 +134,7 @@ collections:
             label: Godziny przyjęć
             label_singular: dzień
             widget: list
+            required: false
             summary: '{{fields.dni}}: {{fields.godziny}}'
             fields:
               - { name: dni, label: Dzień, widget: string }

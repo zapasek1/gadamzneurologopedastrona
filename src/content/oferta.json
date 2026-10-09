@@ -1,25 +1,40 @@
 {
-  "wstep": "Każda terapia zaczyna się od rozmowy i diagnozy. Poniżej znajdziesz obszary, w których pomagam. Jeśli nie widzisz tu swojej sytuacji — napisz, chętnie odpowiem.",
+  "wstep": "Pracuję z dziećmi i dorosłymi, w gabinecie w Warszawie i online. Każda terapia zaczyna się od rozmowy i diagnozy — pomagam zrozumieć, co się dzieje, i ustalić, co dalej.",
   "uslugi": [
     {
       "nazwa": "Diagnoza neurologopedyczna",
-      "opis": "Ocena mowy, rozumienia, połykania i funkcji oralnych. Po diagnozie otrzymujesz omówienie wyników i plan terapii.",
-      "cena": "200 zł / 90 min"
+      "opis": "Ocena mowy, rozumienia, komunikacji i funkcji oralnych. Po diagnozie omawiamy wyniki i plan dalszej pracy.",
+      "cena": ""
     },
     {
       "nazwa": "Terapia dzieci",
-      "opis": "Opóźniony rozwój mowy, wady wymowy, trudności w komunikacji, wsparcie dzieci z zaburzeniami neurorozwojowymi.",
-      "cena": "150 zł / 50 min"
+      "opis": "Opóźniony rozwój mowy, wady wymowy i trudności w komunikacji — praca dopasowana do wieku i możliwości dziecka.",
+      "cena": ""
+    },
+    {
+      "nazwa": "Spektrum autyzmu (ASD)",
+      "opis": "Wspieranie rozwoju mowy i komunikacji u dzieci w spektrum autyzmu, we współpracy z rodzicami.",
+      "cena": ""
+    },
+    {
+      "nazwa": "Komunikacja wspomagająca (AAC)",
+      "opis": "Dobór i wprowadzanie alternatywnych sposobów komunikacji dla osób, które nie mówią lub mówią niewiele.",
+      "cena": ""
+    },
+    {
+      "nazwa": "Terapia miofunkcjonalna i współpraca ortodontyczna",
+      "opis": "Praca nad oddychaniem, połykaniem i napięciem mięśni twarzy — także jako wsparcie leczenia ortodontycznego.",
+      "cena": ""
     },
     {
       "nazwa": "Terapia dorosłych",
-      "opis": "Afazja i dyzartria po udarze lub urazie mózgu, zaburzenia mowy w chorobach neurologicznych, trudności z połykaniem.",
-      "cena": "150 zł / 50 min"
+      "opis": "Zaburzenia mowy i komunikacji u osób dorosłych, m.in. po udarze lub w chorobach neurologicznych.",
+      "cena": ""
     },
     {
-      "nazwa": "Konsultacja dla rodziców",
-      "opis": "Rozmowa o rozwoju mowy dziecka, ćwiczenia do domu i wskazówki na co dzień.",
-      "cena": "120 zł / 45 min"
+      "nazwa": "Konsultacje online",
+      "opis": "Rozmowa, wskazówki i kontynuacja terapii zdalnie — wygodnie z domu.",
+      "cena": ""
     }
   ],
   "pierwsza_wizyta": [
@@ -27,5 +42,5 @@
     "Wywiad i diagnoza w gabinecie. Warto zabrać dokumentację medyczną, jeśli jest.",
     "Omówienie wyników i wspólne ustalenie planu terapii."
   ],
-  "uwagi": "Wizyty domowe możliwe po wcześniejszym ustaleniu. Płatność gotówką, kartą lub przelewem."
+  "uwagi": "Wizyty w gabinecie w Warszawie i online. Ceny i terminy — zadzwoń lub napisz."
 }

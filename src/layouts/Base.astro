@@ -1,6 +1,7 @@
 ---
-import '@fontsource-variable/bricolage-grotesque';
-import '@fontsource-variable/literata';
+import '@fontsource/gilda-display/latin-400.css';
+import '@fontsource/gilda-display/latin-ext-400.css';
+import '@fontsource-variable/jost';
 import '../styles/global.css';
 import ustawienia from '../content/ustawienia.json';
 import cookies from '../content/cookies.json';
@@ -25,7 +26,14 @@ const desc = description ?? ustawienia.seo_opis;
     <meta property="og:description" content={desc} />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pl_PL" />
-    <link rel="icon" href={asset('favicon.svg')} type="image/svg+xml" />
+    <meta property="og:image" content={new URL(asset('og-image.jpg'), Astro.site).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#f2ece7" />
+    <link rel="icon" href={asset('favicon-32.png')} sizes="32x32" type="image/png" />
+    <link rel="icon" href={asset('favicon-64.png')} sizes="64x64" type="image/png" />
+    <link rel="apple-touch-icon" href={asset('apple-touch-icon.png')} />
     <script is:inline>document.documentElement.classList.add('js');</script>
   </head>
   <body>

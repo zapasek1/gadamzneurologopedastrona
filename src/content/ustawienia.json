@@ -1,10 +1,26 @@
 {
+  "logo": "/uploads/logo.png",
   "imie_nazwisko": "mgr Magdalena Sałach-Zapaśnik",
   "tytul": "Neurologopeda",
+  "podtytul": "Dzieci i dorośli · terapia mowy i komunikacji",
   "haslo": "Mowa to wrodzona umiejętność, za pomocą której wyrażamy nasze myśli. Jest procesem przekazywania i odbierania informacji w zrozumiały sposób.\n\nWidzimy to, co potrafimy nazwać. Słowa pozwalają nam wiązać ze sobą obiekty i ich właściwości wyłaniające się z całego potoku bodźców.\n\nNic dziwnego, że pierwsze słowa dziecka są tak oczekiwane przez rodziców. I są często powodem wielu zmartwień, gdy w zakresie komunikacji pojawiają się problemy.",
-  "telefon": "+48 600 000 000",
-  "email": "kontakt@twojadomena.pl",
+  "filary": [
+    {
+      "tytul": "Specjalistyczna terapia",
+      "opis": "Oparta na wiedzy i doświadczeniu."
+    },
+    {
+      "tytul": "Indywidualne podejście",
+      "opis": "Dopasowane do potrzeb każdego pacjenta."
+    },
+    {
+      "tytul": "Wsparcie i zrozumienie",
+      "opis": "W bezpiecznej i życzliwej przestrzeni."
+    }
+  ],
+  "telefon": "+48 604 630 498",
+  "email": "salach.m@op.pl",
   "facebook_url": "https://www.facebook.com/gadaM.z.neurologopeda",
   "instagram_url": "https://www.instagram.com/gadam.z.neurologopeda/",
-  "seo_opis": "Gabinet neurologopedyczny — diagnoza i terapia mowy dzieci i dorosłych. Umów wizytę lub zadaj pytanie online."
+  "seo_opis": "Gadam — neurologopeda mgr Magdalena Sałach-Zapaśnik, Warszawa i online. Diagnoza i terapia mowy dzieci i dorosłych: ASD, terapia miofunkcjonalna, AAC."
 }
