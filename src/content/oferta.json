@@ -1,5 +1,5 @@
 {
-  "wstep": "Pracuję z dziećmi i dorosłymi, w gabinecie w Warszawie i online. Każda terapia zaczyna się od rozmowy i diagnozy — pomagam zrozumieć, co się dzieje, i ustalić, co dalej.",
+  "wstep": "Pracuję z dziećmi i dorosłymi, w gabinecie w Warszawie i online. Każda terapia zaczyna się od rozmowy i diagnozy - pomagam zrozumieć, co się dzieje, i ustalić, co dalej.",
   "uslugi": [
     {
       "nazwa": "Diagnoza neurologopedyczna",
@@ -8,7 +8,7 @@
     },
     {
       "nazwa": "Terapia dzieci",
-      "opis": "Opóźniony rozwój mowy, wady wymowy i trudności w komunikacji — praca dopasowana do wieku i możliwości dziecka.",
+      "opis": "Opóźniony rozwój mowy, wady wymowy i trudności w komunikacji - praca dopasowana do wieku i możliwości dziecka.",
       "cena": ""
     },
     {
@@ -23,7 +23,7 @@
     },
     {
       "nazwa": "Terapia miofunkcjonalna i współpraca ortodontyczna",
-      "opis": "Praca nad oddychaniem, połykaniem i napięciem mięśni twarzy — także jako wsparcie leczenia ortodontycznego.",
+      "opis": "Praca nad oddychaniem, połykaniem i napięciem mięśni twarzy - także jako wsparcie leczenia ortodontycznego.",
       "cena": ""
     },
     {
@@ -33,14 +33,14 @@
     },
     {
       "nazwa": "Konsultacje online",
-      "opis": "Rozmowa, wskazówki i kontynuacja terapii zdalnie — wygodnie z domu.",
+      "opis": "Rozmowa, wskazówki i kontynuacja terapii zdalnie - wygodnie z domu.",
       "cena": ""
     }
   ],
   "pierwsza_wizyta": [
-    "Krótka rozmowa telefoniczna lub wiadomość — ustalamy termin i cel wizyty.",
+    "Krótka rozmowa telefoniczna lub wiadomość - ustalamy termin i cel wizyty.",
     "Wywiad i diagnoza w gabinecie. Warto zabrać dokumentację medyczną, jeśli jest.",
     "Omówienie wyników i wspólne ustalenie planu terapii."
   ],
-  "uwagi": "Wizyty w gabinecie w Warszawie i online. Ceny i terminy — zadzwoń lub napisz."
+  "uwagi": "Wizyty w gabinecie w Warszawie i online. Ceny i terminy - zadzwoń lub napisz."
 }
