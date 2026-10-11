@@ -105,14 +105,12 @@ h3 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin-t
 .masthead__lede p:last-child { margin-bottom: 0; }
 .masthead__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 
-.wave { display: block; width: 100%; height: clamp(56px, 8vw, 90px); margin-top: clamp(1.5rem, 4vw, 2.5rem); }
-.wave path {
-  fill: none;
-  stroke: var(--rose);
-  stroke-width: 2;
-  vector-effect: non-scaling-stroke;
-  stroke-linejoin: round;
-}
+.wave { display: block; width: 100%; height: clamp(64px, 9vw, 104px); margin-top: clamp(1.5rem, 4vw, 2.5rem); overflow: visible; }
+.wave path, .wave line { fill: none; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
+.wave__axis { stroke: var(--band); stroke-width: 1; }
+.wave__line--beige { stroke: #b9a79c; stroke-width: 1.6; }
+.wave__line--slate { stroke: var(--brand); stroke-width: 2.2; }
+.wave__line--rose { stroke: var(--rose); stroke-width: 2; }
 /* Jedyny ruch na stronie: fala „wypowiada się” od lewej do prawej przy wejściu. */
 @media (prefers-reduced-motion: no-preference) {
   .wave { animation: speak 2.2s cubic-bezier(0.45, 0.05, 0.25, 1) 0.2s both; }

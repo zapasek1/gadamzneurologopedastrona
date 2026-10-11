@@ -19,27 +19,25 @@ const tabs = [
   { id: 'kontakt', label: 'Kontakt' },
 ];
 
-// Fala dźwiękowa w nagłówku: kształt wypowiadanego zdania (stały, generowany przy budowie).
-function wavePath(width = 1200, height = 90, step = 2): string {
-  const mid = height / 2;
-  const words = [
-    [0.04, 0.17], [0.21, 0.33], [0.37, 0.43], [0.47, 0.66], [0.70, 0.79], [0.83, 0.96],
-  ];
+// Fale radiowe w nagłówku: trzy gładkie częstotliwości, które się przecinają (stałe, generowane przy budowie).
+const WAVE_W = 1200;
+const WAVE_H = 100;
+function radioWave(freq: number, phase: number, amp: number, step = 3): string {
+  const mid = WAVE_H / 2;
   const pts: string[] = [];
-  for (let x = 0; x <= width; x += step) {
-    const t = x / width;
-    let env = 0;
-    for (const [a, b] of words) {
-      if (t >= a && t <= b) env = Math.max(env, Math.sin(((t - a) / (b - a)) * Math.PI));
-    }
-    const carrier =
-      Math.sin(x * 0.12) * 0.6 + Math.sin(x * 0.047 + 1.3) * 0.3 + Math.sin(x * 0.29 + 0.4) * 0.1;
-    const y = mid - carrier * env * (height * 0.46);
+  for (let x = 0; x <= WAVE_W; x += step) {
+    // Delikatnie zmienna amplituda, żeby linie raz się rozchodziły, raz schodziły do środka.
+    const env = 0.55 + 0.45 * Math.sin((x / WAVE_W) * Math.PI * 2.2 - 0.6);
+    const y = mid - Math.sin(x * freq + phase) * amp * WAVE_H * env;
     pts.push(`${x === 0 ? 'M' : 'L'}${x},${y.toFixed(1)}`);
   }
   return pts.join(' ');
 }
-const wave = wavePath();
+const waves = [
+  { cls: 'wave__line wave__line--beige', d: radioWave(0.0105, 0.6, 0.44) },
+  { cls: 'wave__line wave__line--slate', d: radioWave(0.021, 0.0, 0.36) },
+  { cls: 'wave__line wave__line--rose', d: radioWave(0.0315, 1.2, 0.26) },
+];
 
 const mapQuery = encodeURIComponent(kontakt.adres);
 const mapEmbed = `https://maps.google.com/maps?q=${mapQuery}&z=16&output=embed`;
@@ -81,8 +79,9 @@ const year = new Date().getFullYear();
         />
       )}
     </div>
-    <svg class="wave" viewBox="0 0 1200 90" preserveAspectRatio="none" aria-hidden="true">
-      <path d={wave} />
+    <svg class="wave" viewBox={`0 0 ${WAVE_W} ${WAVE_H}`} preserveAspectRatio="none" aria-hidden="true">
+      <line class="wave__axis" x1="0" y1={WAVE_H / 2} x2={WAVE_W} y2={WAVE_H / 2} />
+      {waves.map((w) => <path class={w.cls} d={w.d} />)}
     </svg>
     {ustawienia.filary?.length > 0 && (
       <div class="pillars">
