@@ -37,7 +37,7 @@ function load(box: HTMLElement) {
   holder.className = 'embed__content';
 
   if (type === 'facebook') {
-    // Wtyczka Facebooka mierzy się raz przy wczytaniu (180–500 px) — podajemy faktyczną szerokość pudełka.
+    // Wtyczka Facebooka mierzy się raz przy wczytaniu (180-500 px), więc podajemy faktyczną szerokość pudełka.
     const width = Math.round(Math.min(500, Math.max(180, box.clientWidth - 16)));
     const src = box.dataset.src!.replace(/([?&])width=\d+/, `$1width=${width}`);
     const f = iframe(src, 'Posty z Facebooka', 640);
@@ -82,8 +82,8 @@ const visible = (el: HTMLElement) => el.offsetParent !== null && el.clientWidth 
 export function initEmbeds() {
   const boxes = Array.from(document.querySelectorAll<HTMLElement>('.embed[data-embed]'));
 
-  // Ładujemy tylko to, co jest widoczne. Treść w ukrytej zakładce wczyta się, gdy zakładka się pokaże —
-  // wtyczki Facebooka/Google wczytane w ukrytym elemencie potrafią się zawiesić (wieczny „spinner”).
+  // Ładujemy tylko to, co jest widoczne. Treść w ukrytej zakładce wczyta się, gdy zakładka się pokaże,
+  // bo wtyczki Facebooka/Google wczytane w ukrytym elemencie potrafią się zawiesić (wieczny „spinner”).
   const loadVisible = () => {
     if (getConsent() !== 'all') return;
     boxes.filter(visible).forEach(load);

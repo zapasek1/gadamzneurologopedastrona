@@ -1,5 +1,5 @@
 // Zgoda na treści zewnętrzne (Facebook, Instagram, Mapy Google).
-// Wybór zapisujemy w localStorage przeglądarki odwiedzającego — to nie jest plik cookie śledzący.
+// Wybór zapisujemy w localStorage przeglądarki odwiedzającego. To nie jest plik cookie śledzący.
 
 export type Consent = 'all' | 'necessary' | null;
 
@@ -20,7 +20,7 @@ export function setConsent(value: Exclude<Consent, null>) {
   try {
     localStorage.setItem(KEY, value);
   } catch {
-    /* tryb prywatny — wybór działa do końca wizyty */
+    /* tryb prywatny: wybór działa do końca wizyty */
   }
   // Wycofanie zgody: przeładowanie usuwa już wczytane ramki Facebooka/Google.
   if (before === 'all' && value === 'necessary') {

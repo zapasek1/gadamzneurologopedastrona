@@ -19,7 +19,7 @@ public_folder: /uploads
 collections:
   - name: strona
     label: Strona
-    description: Teksty, zdjęcia i dane kontaktowe. Po zapisaniu zmiany pojawią się na stronie po około 1–2 minutach.
+    description: Teksty, zdjęcia i dane kontaktowe. Po zapisaniu zmiany pojawią się na stronie po około 1-2 minutach.
     files:
       # ── Ustawienia ogólne ────────────────────────────
       - name: ustawienia
@@ -39,7 +39,7 @@ collections:
             required: false
             max: 3
             summary: '{{fields.tytul}}'
-            hint: 'Ikony są przypisane do kolejności: 1 — mózg, 2 — dwie osoby, 3 — dłonie z sercem.'
+            hint: 'Ikony są przypisane do kolejności: 1. mózg, 2. dwie osoby, 3. dłonie z sercem.'
             fields:
               - { name: tytul, label: Tytuł, widget: string }
               - { name: opis, label: Opis, widget: string }
@@ -139,9 +139,9 @@ collections:
             label_singular: post
             widget: list
             required: false
-            hint: 'Wklej link do posta (na Instagramie: ⋯ → Kopiuj link). Najnowsze dawaj na górę. 3–6 postów wygląda najlepiej.'
+            hint: 'Wklej link do posta (na Instagramie: ⋯ → Kopiuj link). Najnowsze dawaj na górę. 3-6 postów wygląda najlepiej.'
             field: { name: url, label: Link do posta, widget: string }
-          - { name: behold_feed_id, label: 'Behold — ID kanału (opcjonalnie)', widget: string, required: false, hint: 'Jeśli wpisane, zamiast wybranych postów pokaże się automatycznie aktualizowany kanał z Behold.so.' }
+          - { name: behold_feed_id, label: 'Behold: ID kanału (opcjonalnie)', widget: string, required: false, hint: 'Jeśli wpisane, zamiast wybranych postów pokaże się automatycznie aktualizowany kanał z Behold.so.' }
 
       # ── Formularz ────────────────────────────────────
       - name: formularz

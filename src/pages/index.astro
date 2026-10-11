@@ -19,7 +19,7 @@ const tabs = [
   { id: 'kontakt', label: 'Kontakt' },
 ];
 
-// Fala dźwiękowa w nagłówku — kształt wypowiadanego zdania (stały, generowany przy budowie).
+// Fala dźwiękowa w nagłówku: kształt wypowiadanego zdania (stały, generowany przy budowie).
 function wavePath(width = 1200, height = 90, step = 2): string {
   const mid = height / 2;
   const words = [
@@ -134,7 +134,7 @@ const year = new Date().getFullYear();
     <section class="panel" id="o-mnie" role="tabpanel" aria-labelledby="tab-o-mnie" tabindex="-1">
       <div class="about">
         <figure class="about__photo">
-          <img src={asset(oMnie.zdjecie)} alt={`${ustawienia.imie_nazwisko} — zdjęcie`} width="480" height="600" loading="eager" />
+          <img src={asset(oMnie.zdjecie)} alt={`${ustawienia.imie_nazwisko}, zdjęcie`} width="480" height="600" loading="eager" />
         </figure>
         <div class="about__text">
           <h2>{oMnie.naglowek}</h2>
@@ -290,7 +290,7 @@ const year = new Date().getFullYear();
           novalidate
           data-key={techConfig.web3formsKey}
           data-email={ustawienia.email}
-          data-subject={`Pytanie ze strony — ${ustawienia.imie_nazwisko}`}
+          data-subject={`Pytanie ze strony (${ustawienia.imie_nazwisko})`}
           data-thanks={formularz.podziekowanie}
         >
           <div class="form__row">

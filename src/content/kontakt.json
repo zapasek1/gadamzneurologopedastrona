@@ -1,5 +1,5 @@
 {
-  "nazwa_gabinetu": "Gadam — gabinet neurologopedyczny",
+  "nazwa_gabinetu": "Gabinet neurologopedyczny Gadam",
   "adres": "ul. Encyklopedyczna 17, 01-990 Warszawa",
   "forma_wizyt": "Wizyty w gabinecie w Warszawie i online.",
   "jak_trafic": "",
@@ -7,5 +7,5 @@
   "link_mapy_google": "",
   "pokaz_mape": true,
   "godziny": [],
-  "uwaga_godziny": "Wizyty wyłącznie po wcześniejszym umówieniu — zadzwoń lub napisz."
+  "uwaga_godziny": "Wizyty wyłącznie po wcześniejszym umówieniu. Zadzwoń lub napisz."
 }

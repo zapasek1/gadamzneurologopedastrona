@@ -4,9 +4,9 @@
   --surface: #fbf8f6;
   --ink: #2c3e48;
   --ink-soft: #556870;
-  --brand: #4a6470;       /* slate z logo — przyciski, nagłówki */
+  --brand: #4a6470;       /* slate z logo: przyciski, nagłówki */
   --brand-deep: #3a505b;
-  --rose: #c2918b;        /* róż z logo — tylko dekoracja (fala, podkreślenia) */
+  --rose: #c2918b;        /* róż z logo: tylko dekoracja (fala, podkreślenia) */
   --rose-text: #96584f;   /* róż przyciemniony do tekstu i linków (kontrast AA) */
   --band: #e4d9d0;        /* beżowy pas z logo */
   --line: #ddd1ca;
@@ -219,7 +219,7 @@ main.wrap { padding-bottom: clamp(3rem, 8vw, 5rem); }
 .embed--map .embed__gate { min-height: 20rem; }
 .embed--map.is-loaded .embed__content { padding: 0; }
 .instagram-media { margin: 0 auto 1rem !important; min-width: 0 !important; }
-/* Kilka postów IG obok kanału FB — przewijane w pudełku tej samej wysokości. */
+/* Kilka postów IG obok kanału FB, przewijane w pudełku tej samej wysokości. */
 .embed[data-embed='instagram'] .embed__content { max-height: 656px; overflow-y: auto; overscroll-behavior: contain; }
 
 /* Formularz */
@@ -322,7 +322,7 @@ main.wrap { padding-bottom: clamp(3rem, 8vw, 5rem); }
 .page { padding: clamp(2rem, 6vw, 4rem) var(--gutter) 4rem; max-width: 46rem; margin: 0 auto; }
 .page__back { font-family: var(--display); font-weight: 600; display: inline-block; margin-bottom: 2rem; }
 
-/* Centrum wiedzy — rozwijane pytania i metody */
+/* Centrum wiedzy: rozwijane pytania i metody */
 .kb { margin-top: 2.5rem; max-width: 52rem; }
 .kb__title { margin: 0 0 0.75rem; }
 .kb__lede { color: var(--ink-soft); margin: -0.25rem 0 1rem; max-width: 40rem; }

@@ -1,4 +1,4 @@
-// Zakładki: bez JS wszystkie sekcje są widoczne; z JS — pokazujemy jedną i synchronizujemy z #adresem.
+// Zakładki: bez JS wszystkie sekcje są widoczne; z JS pokazujemy jedną i synchronizujemy z #adresem.
 export function initTabs() {
   const tabs = Array.from(document.querySelectorAll<HTMLAnchorElement>('[role="tab"]'));
   const panels = Array.from(document.querySelectorAll<HTMLElement>('[role="tabpanel"]'));
@@ -12,7 +12,7 @@ export function initTabs() {
       t.setAttribute('aria-selected', String(on));
       t.tabIndex = on ? 0 : -1;
       if (on) {
-        // Przewiń tylko pasek zakładek w poziomie (mobile) — nigdy całą stronę.
+        // Przewiń tylko pasek zakładek w poziomie (mobile), nigdy całą stronę.
         const list = t.parentElement!;
         const left = t.offsetLeft - list.offsetLeft;
         if (left < list.scrollLeft || left + t.offsetWidth > list.scrollLeft + list.clientWidth) {

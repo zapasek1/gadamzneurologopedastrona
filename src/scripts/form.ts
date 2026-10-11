@@ -1,5 +1,5 @@
 // Formularz „Zadaj pytanie”: wysyłka przez Web3Forms (e-mail do gabinetu).
-// Bez klucza — otwiera program pocztowy z gotową wiadomością.
+// Bez klucza: otwiera program pocztowy z gotową wiadomością.
 
 export function initForm() {
   const form = document.querySelector<HTMLFormElement>('#form');
@@ -32,13 +32,13 @@ export function initForm() {
 
     const name = String(data.get('name'));
     const body =
-      `${data.get('message')}\n\n—\n${name}\n${data.get('email')}` +
+      `${data.get('message')}\n\n---\n${name}\n${data.get('email')}` +
       (data.get('phone') ? `\nTel.: ${data.get('phone')}` : '') +
       `\nTemat: ${data.get('topic')}`;
 
     if (!key) {
       window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject!)}&body=${encodeURIComponent(body)}`;
-      return setStatus('Otworzył się program pocztowy z gotową wiadomością — wystarczy kliknąć „Wyślij”.', 'ok');
+      return setStatus('Otworzył się program pocztowy z gotową wiadomością. Wystarczy kliknąć „Wyślij”.', 'ok');
     }
 
     button.disabled = true;
@@ -53,7 +53,7 @@ export function initForm() {
           from_name: name,
           name,
           email: data.get('email'),
-          phone: data.get('phone') || '—',
+          phone: data.get('phone') || '-',
           topic: data.get('topic'),
           message: data.get('message'),
           replyto: data.get('email'),
