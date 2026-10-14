@@ -68,6 +68,12 @@ collections:
             widget: list
             required: false
             field: { name: pozycja, label: Pozycja, widget: string }
+          - name: metody
+            label: Metody diagnozy i terapii
+            label_singular: metodę
+            widget: list
+            required: false
+            field: { name: metoda, label: Metoda, widget: string }
 
       # ── Centrum wiedzy ───────────────────────────────
       - name: wiedza

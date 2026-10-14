@@ -146,6 +146,14 @@ const year = new Date().getFullYear();
               </ul>
             </>
           )}
+          {oMnie.metody?.length > 0 && (
+            <>
+              <h3>Metody diagnozy i terapii</h3>
+              <ul class="quals">
+                {oMnie.metody.map((m: string) => <li>{m}</li>)}
+              </ul>
+            </>
+          )}
         </div>
       </div>
     </section>

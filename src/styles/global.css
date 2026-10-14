@@ -157,6 +157,7 @@ main.wrap { padding-bottom: clamp(3rem, 8vw, 5rem); }
 /* O mnie */
 .about { display: grid; gap: clamp(1.5rem, 4vw, 3.5rem); grid-template-columns: 1fr; align-items: start; }
 @media (min-width: 760px) { .about { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+@media (min-width: 760px) { .about__photo { position: sticky; top: 5rem; } }
 .about__photo { margin: 0; }
 .about__photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); background: var(--band); }
 .quals { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
