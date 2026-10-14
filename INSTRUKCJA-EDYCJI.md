@@ -1,7 +1,7 @@
 # Jak edytować stronę
 
 ## Logowanie
-1. Wejdź na adres strony z dopiskiem **/admin/** (np. `https://twojadomena.pl/admin/`).
+1. Wejdź na adres strony z dopiskiem **/admin/** (`https://gadam.edu.pl/admin/`).
 2. Kliknij **Sign In Using Access Token** i wklej token, który dostałaś/dostałeś. Przeglądarka go zapamięta, więc przy kolejnych wizytach logowanie jest automatyczne.
 
 ## Zmiana treści
