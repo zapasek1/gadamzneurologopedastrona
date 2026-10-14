@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import ustawienia from '../content/ustawienia.json';
+import { href } from '../lib/util';
+---
+<Base title={`Nie znaleziono strony | ${ustawienia.nazwa_strony || ustawienia.imie_nazwisko}`}>
+  <main id="tresc" class="page notfound">
+    <p class="masthead__role">Błąd 404</p>
+    <h1>Tej strony już nie ma</h1>
+    <p>Strona gabinetu ma nowy wygląd i część starych adresów przestała działać. Wszystko, czego szukasz, znajdziesz na stronie głównej.</p>
+    <p class="notfound__links">
+      <a class="btn btn--solid" href={href('')}>Strona główna</a>
+      <a class="btn" href={href('#wiedza')}>Centrum wiedzy</a>
+      <a class="btn" href={href('#kontakt')}>Kontakt</a>
+    </p>
+  </main>
+</Base>
