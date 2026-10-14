@@ -275,6 +275,7 @@ main.wrap { padding-bottom: clamp(3rem, 8vw, 5rem); }
 .footer p { margin: 0; }
 
 .footer__links { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; }
+.footer__ids { display: flex; flex-wrap: wrap; gap: 0 1rem; font-size: 0.85rem; margin-top: 0.15rem !important; }
 
 /* Pasek zgody na cookies */
 .consent {

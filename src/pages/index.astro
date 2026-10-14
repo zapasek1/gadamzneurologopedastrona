@@ -387,7 +387,15 @@ const year = new Date().getFullYear();
 
   <footer class="footer">
     <div class="wrap footer__inner">
-      <p>© {year} {kontakt.nazwa_gabinetu} · {ustawienia.imie_nazwisko}</p>
+      <div class="footer__company">
+        <p>© {year} {ustawienia.firma || ustawienia.imie_nazwisko}</p>
+        {(ustawienia.regon || ustawienia.nip) && (
+          <p class="footer__ids">
+            {ustawienia.nip && <span>NIP {ustawienia.nip}</span>}
+            {ustawienia.regon && <span>REGON {ustawienia.regon}</span>}
+          </p>
+        )}
+      </div>
       <p class="footer__links">
         <a href={href('polityka-prywatnosci/')}>Polityka prywatności</a>
         <a href="#" data-open-consent>Ustawienia cookies</a>

@@ -45,6 +45,9 @@ collections:
               - { name: opis, label: Opis, widget: string }
           - { name: telefon, label: Telefon, widget: string }
           - { name: email, label: E-mail, widget: string }
+          - { name: firma, label: Nazwa firmy (z rejestru), widget: string, required: false, hint: 'Widoczna w stopce, np. gadaM Magdalena Sałach-Zapaśnik.' }
+          - { name: regon, label: REGON, widget: string, required: false }
+          - { name: nip, label: NIP, widget: string, required: false, hint: 'Opcjonalnie. Puste pole = NIP nie pojawi się w stopce.' }
           - { name: facebook_url, label: Link do Facebooka, widget: string, required: false, hint: 'Pełny adres strony na Facebooku, np. https://www.facebook.com/nazwa' }
           - { name: instagram_url, label: Link do Instagrama, widget: string, required: false }
           - { name: seo_opis, label: Opis dla Google, widget: text, hint: 'Do ~155 znaków. Pokazuje się w wynikach wyszukiwania.' }
