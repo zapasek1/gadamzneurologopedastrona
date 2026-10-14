@@ -99,7 +99,7 @@ collections:
             fields:
               - { name: tytul, label: Pytanie / tytuł, widget: string }
               - { name: tresc, label: Treść, widget: markdown }
-          - { name: metody_wstep, label: Wstęp do metod, widget: text, required: false }
+          - { name: metody_wstep, label: Wstęp do metod, widget: markdown, required: false }
           - name: metody
             label: Metody terapii
             label_singular: metodę
