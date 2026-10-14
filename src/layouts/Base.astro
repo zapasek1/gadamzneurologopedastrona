@@ -41,7 +41,11 @@ const structuredData = {
     : kontakt.adres,
   founder: { '@type': 'Person', name: ustawienia.imie_nazwisko, jobTitle: ustawienia.tytul },
   sameAs: [ustawienia.facebook_url, ustawienia.instagram_url].filter(Boolean),
-  identifier: ustawienia.regon ? { '@type': 'PropertyValue', propertyID: 'REGON', value: ustawienia.regon } : undefined,
+  identifier: [
+    ustawienia.nip && { '@type': 'PropertyValue', propertyID: 'NIP', value: ustawienia.nip },
+    ustawienia.regon && { '@type': 'PropertyValue', propertyID: 'REGON', value: ustawienia.regon },
+  ].filter(Boolean),
+  taxID: ustawienia.nip || undefined,
 };
 ---
 <!doctype html>
