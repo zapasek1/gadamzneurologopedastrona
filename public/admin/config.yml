@@ -33,6 +33,13 @@ collections:
           - { name: tytul, label: Zawód / tytuł, widget: string, hint: 'np. Neurologopeda' }
           - { name: podtytul, label: Linia pod nazwiskiem, widget: string, required: false, hint: 'np. Dzieci i dorośli · terapia mowy i komunikacji' }
           - { name: haslo, label: Tekst pod nazwiskiem, widget: markdown, hint: 'Widoczny na samej górze strony. Nowy akapit = pusta linia (Enter dwa razy).' }
+          - name: fakty
+            label: Najważniejsze fakty (pod tekstem)
+            label_singular: fakt
+            widget: list
+            required: false
+            hint: 'Krótkie hasła, np. 30 lat doświadczenia. Pierwszy jest wyróżniony kolorem. Najlepiej 3-4.'
+            field: { name: fakt, label: Fakt, widget: string }
           - name: filary
             label: Trzy wyróżniki (pas pod nagłówkiem)
             label_singular: wyróżnik

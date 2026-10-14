@@ -63,6 +63,11 @@ const year = new Date().getFullYear();
         </h1>
         {ustawienia.podtytul && <p class="masthead__sub">{ustawienia.podtytul}</p>}
         <div class="masthead__lede" set:html={md(ustawienia.haslo)} />
+        {ustawienia.fakty?.length > 0 && (
+          <ul class="facts">
+            {ustawienia.fakty.map((f: string) => <li>{f}</li>)}
+          </ul>
+        )}
         <div class="masthead__actions">
           <a class="btn btn--solid" href="#pytanie" data-tab-link="pytanie">Zadaj pytanie</a>
         </div>
