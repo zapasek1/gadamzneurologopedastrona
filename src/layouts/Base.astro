@@ -5,6 +5,7 @@ import '@fontsource-variable/jost';
 import '../styles/global.css';
 import ustawienia from '../content/ustawienia.json';
 import cookies from '../content/cookies.json';
+import kontakt from '../content/kontakt.json';
 import { asset, href } from '../lib/util';
 
 interface Props {
@@ -14,6 +15,34 @@ interface Props {
 const { title, description } = Astro.props;
 const pageTitle = title ?? `${ustawienia.imie_nazwisko} | ${ustawienia.tytul}`;
 const desc = description ?? ustawienia.seo_opis;
+
+// Dane strukturalne (schema.org) dla Google: nazwa, adres, telefon, profile społecznościowe.
+const adresMatch = kontakt.adres.match(/^(.*?),\s*(\d{2}-\d{3})\s+(.+)$/);
+const siteUrl = new URL(import.meta.env.BASE_URL, Astro.site).href;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': ['MedicalBusiness', 'LocalBusiness'],
+  name: kontakt.nazwa_gabinetu,
+  legalName: ustawienia.firma || undefined,
+  description: ustawienia.seo_opis,
+  url: siteUrl,
+  image: new URL(asset('og-image.jpg'), Astro.site).href,
+  logo: ustawienia.logo ? new URL(asset(ustawienia.logo), Astro.site).href : undefined,
+  telephone: ustawienia.telefon,
+  email: ustawienia.email,
+  address: adresMatch
+    ? {
+        '@type': 'PostalAddress',
+        streetAddress: adresMatch[1],
+        postalCode: adresMatch[2],
+        addressLocality: adresMatch[3],
+        addressCountry: 'PL',
+      }
+    : kontakt.adres,
+  founder: { '@type': 'Person', name: ustawienia.imie_nazwisko, jobTitle: ustawienia.tytul },
+  sameAs: [ustawienia.facebook_url, ustawienia.instagram_url].filter(Boolean),
+  identifier: ustawienia.regon ? { '@type': 'PropertyValue', propertyID: 'REGON', value: ustawienia.regon } : undefined,
+};
 ---
 <!doctype html>
 <html lang="pl">
@@ -34,6 +63,8 @@ const desc = description ?? ustawienia.seo_opis;
     <link rel="icon" href={asset('favicon-32.png')} sizes="32x32" type="image/png" />
     <link rel="icon" href={asset('favicon-64.png')} sizes="64x64" type="image/png" />
     <link rel="apple-touch-icon" href={asset('apple-touch-icon.png')} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     <script is:inline>document.documentElement.classList.add('js');</script>
   </head>
   <body>
