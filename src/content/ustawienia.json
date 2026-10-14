@@ -4,8 +4,14 @@
   "imie_nazwisko": "mgr Magdalena Sałach-Zapaśnik",
   "tytul": "Neurologopeda",
   "podtytul": "Dzieci i dorośli · terapia mowy i komunikacji",
-  "haslo": "Dyplomowany neurologopeda i terapeuta miofunkcjonalny z ponad 30 latami doświadczenia w pracy z dziećmi. Wykładowca na kierunku logopedia kliniczna i szkolna na Uniwersytecie Kardynała Stefana Wyszyńskiego w Warszawie.\n\nPomagam dzieciom z opóźnionym rozwojem mowy, spektrum autyzmu oraz trudnościami w karmieniu i połykaniu. Współpracuję z ortodontami i innymi specjalistami, a rodzicom pokazuję, jak wspierać dziecko na co dzień.",
-  "fakty": [],
+  "haslo": "Dyplomowany neurologopeda i terapeuta miofunkcjonalny z ponad 30 latami doświadczenia w pracy z dziećmi i dorosłymi. Wykładowca na kierunku logopedia kliniczna i szkolna na Uniwersytecie Kardynała Stefana Wyszyńskiego w Warszawie.\n\nPomagam dzieciom z opóźnionym rozwojem mowy, spektrum autyzmu oraz trudnościami w karmieniu i połykaniu. Współpracuję z ortodontami i innymi specjalistami, a rodzicom pokazuję, jak wspierać dziecko na co dzień.",
+  "fakty": [
+    "30 lat doświadczenia",
+    "Nauczyciel akademicki UKSW",
+    "Terapia miofunkcjonalna wg A. Kittel",
+    "Terapeuta OPT (Oral Placement Therapy)",
+    "Terapeuta AAC (komunikacja alternatywna i wspomagająca)"
+  ],
   "filary": [
     {
       "tytul": "Specjalistyczna terapia",
