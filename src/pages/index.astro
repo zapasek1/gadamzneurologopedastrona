@@ -63,6 +63,11 @@ const year = new Date().getFullYear();
         </h1>
         {ustawienia.podtytul && <p class="masthead__sub">{ustawienia.podtytul}</p>}
         <div class="masthead__lede" set:html={md(ustawienia.haslo)} />
+        {ustawienia.fakty?.length > 0 && (
+          <ul class="facts">
+            {ustawienia.fakty.map((f: string) => <li>{f}</li>)}
+          </ul>
+        )}
         <div class="masthead__actions">
           <a class="btn btn--solid" href="#pytanie" data-tab-link="pytanie">Zadaj pytanie</a>
         </div>
@@ -146,6 +151,14 @@ const year = new Date().getFullYear();
               </ul>
             </>
           )}
+          {oMnie.metody?.length > 0 && (
+            <>
+              <h3>Metody diagnozy i terapii</h3>
+              <ul class="quals">
+                {oMnie.metody.map((m: string) => <li>{m}</li>)}
+              </ul>
+            </>
+          )}
         </div>
       </div>
     </section>
@@ -170,7 +183,7 @@ const year = new Date().getFullYear();
       {wiedza.metody?.length > 0 && (
         <div class="kb">
           <h3 class="kb__title">Metody terapii</h3>
-          {wiedza.metody_wstep && <p class="kb__lede">{wiedza.metody_wstep}</p>}
+          {wiedza.metody_wstep && <div class="kb__lede" set:html={md(wiedza.metody_wstep)} />}
           {wiedza.metody.map((m) => (
             <details class="kb__item">
               <summary>{m.nazwa}</summary>

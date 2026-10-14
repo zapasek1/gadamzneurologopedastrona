@@ -33,6 +33,13 @@ collections:
           - { name: tytul, label: Zawód / tytuł, widget: string, hint: 'np. Neurologopeda' }
           - { name: podtytul, label: Linia pod nazwiskiem, widget: string, required: false, hint: 'np. Dzieci i dorośli · terapia mowy i komunikacji' }
           - { name: haslo, label: Tekst pod nazwiskiem, widget: markdown, hint: 'Widoczny na samej górze strony. Nowy akapit = pusta linia (Enter dwa razy).' }
+          - name: fakty
+            label: Najważniejsze fakty (pod tekstem)
+            label_singular: fakt
+            widget: list
+            required: false
+            hint: 'Krótkie hasła, np. 30 lat doświadczenia. Pierwszy jest wyróżniony kolorem. Najlepiej 3-4.'
+            field: { name: fakt, label: Fakt, widget: string }
           - name: filary
             label: Trzy wyróżniki (pas pod nagłówkiem)
             label_singular: wyróżnik
@@ -68,6 +75,12 @@ collections:
             widget: list
             required: false
             field: { name: pozycja, label: Pozycja, widget: string }
+          - name: metody
+            label: Metody diagnozy i terapii
+            label_singular: metodę
+            widget: list
+            required: false
+            field: { name: metoda, label: Metoda, widget: string }
 
       # ── Centrum wiedzy ───────────────────────────────
       - name: wiedza
@@ -86,7 +99,7 @@ collections:
             fields:
               - { name: tytul, label: Pytanie / tytuł, widget: string }
               - { name: tresc, label: Treść, widget: markdown }
-          - { name: metody_wstep, label: Wstęp do metod, widget: text, required: false }
+          - { name: metody_wstep, label: Wstęp do metod, widget: markdown, required: false }
           - name: metody
             label: Metody terapii
             label_singular: metodę

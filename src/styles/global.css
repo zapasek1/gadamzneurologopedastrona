@@ -104,6 +104,20 @@ h3 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin-t
 .masthead__lede p { margin: 0 0 0.85em; }
 .masthead__lede p:last-child { margin-bottom: 0; }
 .masthead__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+/* Najważniejsze fakty pod wstępem */
+.facts { list-style: none; padding: 0; margin: 0 0 1.75rem; display: flex; flex-wrap: wrap; gap: 0.5rem; max-width: 40rem; }
+.facts li {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--brand-deep);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--rose);
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  line-height: 1.3;
+}
+.facts li:first-child { background: var(--brand); color: #fff; border-color: var(--brand); border-left-color: var(--rose); }
 
 .wave { display: block; width: 100%; height: clamp(64px, 9vw, 104px); margin-top: clamp(1.5rem, 4vw, 2.5rem); overflow: visible; }
 .wave path, .wave line { fill: none; vector-effect: non-scaling-stroke; stroke-linecap: round; stroke-linejoin: round; }
@@ -157,6 +171,7 @@ main.wrap { padding-bottom: clamp(3rem, 8vw, 5rem); }
 /* O mnie */
 .about { display: grid; gap: clamp(1.5rem, 4vw, 3.5rem); grid-template-columns: 1fr; align-items: start; }
 @media (min-width: 760px) { .about { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); } }
+@media (min-width: 760px) { .about__photo { position: sticky; top: 5rem; } }
 .about__photo { margin: 0; }
 .about__photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); background: var(--band); }
 .quals { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--line); }
@@ -326,6 +341,8 @@ main.wrap { padding-bottom: clamp(3rem, 8vw, 5rem); }
 .kb { margin-top: 2.5rem; max-width: 52rem; }
 .kb__title { margin: 0 0 0.75rem; }
 .kb__lede { color: var(--ink-soft); margin: -0.25rem 0 1rem; max-width: 40rem; }
+.kb__lede p { margin: 0; }
+.kb__lede a { color: var(--rose-text); }
 .kb__item { border-top: 1px solid var(--line); }
 .kb__item:last-of-type { border-bottom: 1px solid var(--line); }
 .kb__item summary {
