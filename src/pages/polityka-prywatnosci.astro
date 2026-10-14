@@ -4,7 +4,7 @@ import polityka from '../content/polityka.json';
 import ustawienia from '../content/ustawienia.json';
 import { href, md } from '../lib/util';
 ---
-<Base title={`Polityka prywatności | ${ustawienia.imie_nazwisko}`}>
+<Base title={`Polityka prywatności | ${ustawienia.nazwa_strony || ustawienia.imie_nazwisko}`}>
   <main id="tresc" class="page">
     <a class="page__back" href={href('')}>Wróć na stronę główną</a>
     <h1>Polityka prywatności</h1>

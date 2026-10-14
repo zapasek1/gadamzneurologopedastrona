@@ -13,7 +13,8 @@ interface Props {
   description?: string;
 }
 const { title, description } = Astro.props;
-const pageTitle = title ?? `${ustawienia.imie_nazwisko} | ${ustawienia.tytul}`;
+const brand = ustawienia.nazwa_strony || ustawienia.imie_nazwisko;
+const pageTitle = title ?? `${brand} | ${ustawienia.tytul} ${ustawienia.imie_nazwisko}`;
 const desc = description ?? ustawienia.seo_opis;
 
 // Dane strukturalne (schema.org) dla Google: nazwa, adres, telefon, profile społecznościowe.

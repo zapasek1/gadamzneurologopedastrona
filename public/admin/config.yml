@@ -28,6 +28,7 @@ collections:
         format: json
         fields:
           - { name: logo, label: Logo, widget: image, hint: 'Okrągłe logo z przezroczystym tłem (PNG). Pokazuje się w nagłówku.' }
+          - { name: nazwa_strony, label: Nazwa w karcie przeglądarki, widget: string, required: false, hint: 'Pierwsze słowa tytułu strony w karcie i w Google, np. Gabinet gadaM.' }
           - { name: imie_nazwisko, label: Imię i nazwisko, widget: string }
           - { name: tytul, label: Zawód / tytuł, widget: string, hint: 'np. Neurologopeda' }
           - { name: podtytul, label: Linia pod nazwiskiem, widget: string, required: false, hint: 'np. Dzieci i dorośli · terapia mowy i komunikacji' }
