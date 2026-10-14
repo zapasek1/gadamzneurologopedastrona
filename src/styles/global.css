@@ -255,6 +255,7 @@ main.wrap { padding-bottom: clamp(3rem, 8vw, 5rem); }
 .form__status[data-kind='ok'] { color: var(--ok); }
 .form__status[data-kind='err'] { color: var(--err); }
 .hp { position: absolute; left: -9999px; opacity: 0; }
+.form__rodo { margin: 0; font-size: 0.82rem; line-height: 1.5; color: var(--ink-soft); }
 
 /* Kontakt */
 .contact { display: grid; gap: clamp(1.5rem, 4vw, 3.5rem); }

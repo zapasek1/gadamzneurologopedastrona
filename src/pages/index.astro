@@ -325,6 +325,9 @@ const year = new Date().getFullYear();
             <span>{formularz.zgoda} <a href={href('polityka-prywatnosci/')}>Polityka prywatności</a>.</span>
           </label>
           <button class="btn btn--solid form__submit" type="submit">Wyślij pytanie</button>
+          <p class="form__rodo">
+            Administratorem danych z formularza jest {ustawienia.firma || ustawienia.imie_nazwisko}. Dane wykorzystuję tylko do odpowiedzi na wiadomość. Szczegóły i Twoje prawa: <a href={href('polityka-prywatnosci/')}>Polityka prywatności</a>.
+          </p>
           <p class="form__status" role="status" aria-live="polite"></p>
         </form>
       </div>
