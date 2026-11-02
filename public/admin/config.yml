@@ -38,8 +38,11 @@ collections:
             label_singular: fakt
             widget: list
             required: false
-            hint: 'Krótkie hasła, np. 30 lat doświadczenia. Pierwszy jest wyróżniony kolorem. Najlepiej 3-4.'
-            field: { name: fakt, label: Fakt, widget: string }
+            summary: '{{fields.tekst}}'
+            hint: 'Krótkie hasła, np. 30 lat doświadczenia. Pierwszy jest wyróżniony kolorem. Pole Podstrona = etykieta staje się klikalna.'
+            fields:
+              - { name: tekst, label: Tekst, widget: string }
+              - { name: strona, label: 'Podstrona (opcjonalnie)', widget: string, required: false, hint: 'Adres podstrony z sekcji Podstrony terapii, np. terapia-miofunkcjonalna. Puste = zwykła etykieta.' }
           - name: filary
             label: Trzy wyróżniki (pas pod nagłówkiem)
             label_singular: wyróżnik
@@ -135,6 +138,7 @@ collections:
               - { name: nazwa, label: Nazwa, widget: string }
               - { name: opis, label: Opis, widget: text }
               - { name: cena, label: 'Cena i czas (opcjonalnie)', widget: string, required: false, hint: 'np. 150 zł / 50 min' }
+              - { name: strona, label: 'Podstrona (opcjonalnie)', widget: string, required: false, hint: 'np. terapia-miofunkcjonalna. Doda link „Więcej o terapii”.' }
           - name: pierwsza_wizyta
             label: Jak wygląda pierwsza wizyta (kroki)
             label_singular: krok
@@ -142,6 +146,26 @@ collections:
             required: false
             field: { name: krok, label: Krok, widget: text }
           - { name: uwagi, label: Dodatkowe informacje, widget: markdown, required: false, hint: 'np. płatności, wizyty domowe.' }
+
+      # ── Podstrony terapii ────────────────────────────
+      - name: terapie
+        label: Podstrony terapii
+        file: src/content/terapie.json
+        format: json
+        fields:
+          - name: strony
+            label: Podstrony
+            label_singular: podstronę
+            widget: list
+            summary: '{{fields.tytul}}'
+            hint: 'Każda podstrona ma adres gadam.edu.pl/terapie/<adres>/. Nowa podstrona pojawi się po zapisaniu; trzeba też podać jej adres w etykiecie lub usłudze.'
+            fields:
+              - { name: slug, label: 'Adres (małe litery, bez spacji)', widget: string, hint: 'np. terapia-miofunkcjonalna. Nie zmieniaj po publikacji, bo stare linki przestaną działać.' }
+              - { name: tytul, label: Tytuł, widget: string }
+              - { name: podtytul, label: Podtytuł, widget: string, required: false }
+              - { name: opis_google, label: Opis dla Google, widget: text, required: false, hint: 'Do ~155 znaków.' }
+              - { name: tresc, label: Treść, widget: markdown, hint: 'Śródtytuły: przycisk H2 w edytorze.' }
+              - { name: zaproszenie, label: Zaproszenie na końcu, widget: text, required: false, hint: 'Pod nim pojawiają się przyciski Zadaj pytanie i Kontakt.' }
 
       # ── Aktualności (social media) ───────────────────
       - name: aktualnosci

@@ -1,0 +1,45 @@
+---
+import Base from '../../layouts/Base.astro';
+import terapie from '../../content/terapie.json';
+import ustawienia from '../../content/ustawienia.json';
+import { asset, href, md } from '../../lib/util';
+
+export function getStaticPaths() {
+  return terapie.strony.map((s) => ({ params: { slug: s.slug }, props: { strona: s } }));
+}
+const { strona } = Astro.props;
+const brand = ustawienia.nazwa_strony || ustawienia.imie_nazwisko;
+const inne = terapie.strony.filter((s) => s.slug !== strona.slug);
+---
+<Base title={`${strona.tytul} | ${brand}`} description={strona.opis_google || ustawienia.seo_opis}>
+  <header class="subhead">
+    <div class="wrap subhead__inner">
+      <a class="subhead__brand" href={href('')}>
+        {ustawienia.logo && <img src={asset(ustawienia.logo)} alt="" width="44" height="44" />}
+        <span>{brand}</span>
+      </a>
+      <a class="subhead__back" href={href('')}>Strona główna</a>
+    </div>
+  </header>
+  <main id="tresc" class="page page--therapy">
+    <p class="page__eyebrow">{ustawienia.imie_nazwisko} · {ustawienia.tytul}</p>
+    <h1>{strona.tytul}</h1>
+    {strona.podtytul && <p class="page__lede">{strona.podtytul}</p>}
+    <div class="prose" set:html={md(strona.tresc)} />
+    {strona.zaproszenie && (
+      <aside class="cta">
+        <p>{strona.zaproszenie}</p>
+        <div class="cta__actions">
+          <a class="btn btn--solid" href={href('#pytanie')}>Zadaj pytanie</a>
+          <a class="btn" href={href('#kontakt')}>Kontakt</a>
+        </div>
+      </aside>
+    )}
+    {inne.length > 0 && (
+      <nav class="page__more" aria-label="Inne terapie">
+        <p>Zobacz także:</p>
+        <ul>{inne.map((s) => <li><a href={href(`terapie/${s.slug}/`)}>{s.tytul}</a></li>)}</ul>
+      </nav>
+    )}
+  </main>
+</Base>

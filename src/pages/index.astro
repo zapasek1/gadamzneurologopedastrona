@@ -65,7 +65,13 @@ const year = new Date().getFullYear();
         <div class="masthead__lede" set:html={md(ustawienia.haslo)} />
         {ustawienia.fakty?.length > 0 && (
           <ul class="facts">
-            {ustawienia.fakty.map((f: string) => <li>{f}</li>)}
+            {ustawienia.fakty.map((f: any) => {
+              const tekst = typeof f === 'string' ? f : f.tekst;
+              const strona = typeof f === 'string' ? '' : f.strona;
+              return strona
+                ? <li class="facts__link"><a href={href(`terapie/${strona}/`)}>{tekst}<span aria-hidden="true"> →</span></a></li>
+                : <li>{tekst}</li>;
+            })}
           </ul>
         )}
         <div class="masthead__actions">
@@ -213,7 +219,7 @@ const year = new Date().getFullYear();
         {oferta.uslugi.map((u) => (
           <div class="services__row">
             <dt>{u.nazwa}</dt>
-            <dd class="services__desc">{u.opis}</dd>
+            <dd class="services__desc">{u.opis}{(u as any).strona && <> <a class="services__more" href={href(`terapie/${(u as any).strona}/`)}>Więcej o terapii</a></>}</dd>
             {u.cena && <dd class="services__price">{u.cena}</dd>}
           </div>
         ))}

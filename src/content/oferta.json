@@ -24,7 +24,13 @@
     {
       "nazwa": "Terapia miofunkcjonalna i współpraca ortodontyczna",
       "opis": "Praca nad oddychaniem, połykaniem i napięciem mięśni twarzy - także jako wsparcie leczenia ortodontycznego.",
-      "cena": ""
+      "cena": "",
+      "strona": "terapia-miofunkcjonalna"
+    },
+    {
+      "nazwa": "Elektrostymulacja",
+      "opis": "Wsparcie terapii funkcji oralnych i miofunkcjonalnych impulsami elektrycznymi (TENS/EMS), po indywidualnej ocenie i kwalifikacji.",
+      "strona": "elektrostymulacja"
     },
     {
       "nazwa": "Terapia dorosłych",
