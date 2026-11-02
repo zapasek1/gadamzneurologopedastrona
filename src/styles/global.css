@@ -396,3 +396,26 @@ main.wrap { padding-bottom: clamp(3rem, 8vw, 5rem); }
 /* Strona 404 */
 .notfound h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); }
 .notfound__links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.75rem; }
+
+/* Klikalne etykiety pod wstępem */
+.facts li.facts__link { padding: 0; }
+.facts__link a { display: block; padding: 0.4rem 0.75rem; color: var(--brand-deep); text-decoration: none; border-radius: 6px; }
+.facts__link a:hover, .facts__link a:focus-visible { background: var(--band); }
+.facts__link a span { color: var(--rose-text); }
+.services__more { white-space: nowrap; font-weight: 500; }
+
+/* Podstrony terapii */
+.subhead { border-bottom: 1px solid var(--line); background: var(--surface); }
+.subhead__inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 0.6rem; }
+.subhead__brand { display: flex; align-items: center; gap: 0.6rem; font-family: var(--serif); font-size: 1.2rem; color: var(--ink); text-decoration: none; }
+.subhead__back { font-family: var(--display); font-weight: 600; }
+.page__eyebrow { font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose-text); margin: 0 0 0.5rem; }
+.page--therapy h1 { margin-bottom: 0.5rem; }
+.page__lede { font-size: 1.15rem; color: var(--ink-soft); margin: 0 0 2rem; }
+.page--therapy .prose h2 { margin-top: 2.25rem; }
+.cta { margin-top: 2.5rem; padding: 1.5rem; background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--rose); border-radius: 10px; }
+.cta p { font-weight: 600; margin: 0 0 1rem; color: var(--brand-deep); }
+.cta__actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.page__more { margin-top: 2.5rem; }
+.page__more p { font-weight: 600; margin: 0 0 0.25rem; }
+.page__more ul { margin: 0; padding-left: 1.2rem; }
