@@ -28,6 +28,11 @@
       "strona": "terapia-miofunkcjonalna"
     },
     {
+      "nazwa": "Elektrostymulacja",
+      "opis": "Wsparcie terapii funkcji oralnych i miofunkcjonalnych impulsami elektrycznymi (TENS/EMS), po indywidualnej ocenie i kwalifikacji.",
+      "strona": "elektrostymulacja"
+    },
+    {
       "nazwa": "Terapia dorosłych",
       "opis": "Zaburzenia mowy i komunikacji u osób dorosłych, m.in. po udarze lub w chorobach neurologicznych.",
       "cena": ""
