@@ -9,7 +9,8 @@
     {
       "nazwa": "Terapia dzieci",
       "opis": "Opóźniony rozwój mowy, wady wymowy i trudności w komunikacji - praca dopasowana do wieku i możliwości dziecka.",
-      "cena": ""
+      "cena": "",
+      "strona": "opozniony-rozwoj-mowy"
     },
     {
       "nazwa": "Spektrum autyzmu (ASD)",
@@ -19,7 +20,8 @@
     {
       "nazwa": "Komunikacja wspomagająca (AAC)",
       "opis": "Dobór i wprowadzanie alternatywnych sposobów komunikacji dla osób, które nie mówią lub mówią niewiele.",
-      "cena": ""
+      "cena": "",
+      "strona": "aac"
     },
     {
       "nazwa": "Terapia miofunkcjonalna i współpraca ortodontyczna",
