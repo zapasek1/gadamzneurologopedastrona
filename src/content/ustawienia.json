@@ -13,6 +13,9 @@
       "tekst": "Nauczyciel akademicki UKSW"
     },
     {
+      "tekst": "Terapeuta OPT (Oral Placement Therapy)"
+    },
+    {
       "tekst": "Terapia miofunkcjonalna",
       "strona": "terapia-miofunkcjonalna"
     },
@@ -21,10 +24,20 @@
       "strona": "elektrostymulacja"
     },
     {
-      "tekst": "Terapeuta OPT (Oral Placement Therapy)"
+      "tekst": "Alternatywne i wspomagające metody komunikacji (AAC)",
+      "strona": "aac"
     },
     {
-      "tekst": "Terapeuta AAC (komunikacja alternatywna i wspomagająca)"
+      "tekst": "Terapia opóźnionego rozwoju mowy (ORM)",
+      "strona": "opozniony-rozwoj-mowy"
+    },
+    {
+      "tekst": "Wspomaganie leczenia ortodontycznego",
+      "strona": "wspomaganie-leczenia-ortodontycznego"
+    },
+    {
+      "tekst": "Dorośli",
+      "strona": "terapia-miofunkcjonalna-dorosli"
     }
   ],
   "filary": [
